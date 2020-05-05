@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             mc:Ignorable="d"
+             x:Class="PokeApp.Views.LoginView">
+    <ContentPage.Content>
+        
+        <Grid VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ff:CachedImage Source="background"
+                            Grid.Row="0"
+                            Grid.RowSpan="3"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Aspect="Fill">
+            </ff:CachedImage>
+            <ff:CachedImage Source="pokemonLogo"
+                            Grid.Row="0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+            </ff:CachedImage>
+            <Frame Grid.Row="1"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   CornerRadius="5"
+                   BackgroundColor="White"
+                   Margin="30,0,30,0">
+                <Grid VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           Grid.Row="0"
+                           Text="Login"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand"
+                           FontAttributes="Bold"
+                           FontSize="Large"
+                           Style="{StaticResource labelFontStyle}"/>
+                    <Entry Grid.Row="1"
+                           Grid.Column="1"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           Placeholder="Email"
+                           Text="{Binding Email}"
+                           Style="{StaticResource entryFontStyle}"/>
+                    <Entry Grid.Row="2"
+                           Grid.Column="1"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           Placeholder="Password"
+                           IsPassword="true"
+                           Text="{Binding Password}"
+                           Style="{StaticResource entryFontStyle}"/>
+                    <Button Grid.Row="3"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Text="GO!"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            BackgroundColor="#CC0000"
+                            TextColor="White"
+                            Command="{Binding Login}"/>
+                </Grid>
+            </Frame>
+            <ff:CachedImage Source="pokeball"
+                            Grid.Row="2"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand">
+            </ff:CachedImage>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

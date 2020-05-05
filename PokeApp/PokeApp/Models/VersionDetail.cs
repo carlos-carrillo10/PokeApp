@@ -7,6 +7,6 @@ namespace PokeApp.Models
     public class VersionDetail
     {
         public int rarity { get; set; }
-        public version { get; set; }
+        public Version version { get; set; }
 }
 }

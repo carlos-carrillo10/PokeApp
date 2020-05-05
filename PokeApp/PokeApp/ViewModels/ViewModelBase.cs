@@ -42,5 +42,55 @@ namespace PokeApp.ViewModels
         {
 
         }
+
+        #region Bindable Properties
+
+        private bool _isLoading;
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
+            {
+                _isLoading = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isEmpty;
+
+        public bool IsEmpty
+        {
+            get { return _isEmpty; }
+            set
+            {
+                _isEmpty = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        public async void NoInternetAlert()
+        {
+            await App.Current.MainPage.DisplayAlert("No hay Conexión a Internet",
+                                                      "Por favor revisa tu conexión a internet e intentalo de nuevo.", "ok");
+        }
+
+        public async void ErrorAlert()
+        {
+            await App.Current.MainPage.DisplayAlert("Error",
+                                                     "Lo sentimos, ha surgido un inconveniente. Por favor, intentalo más tarde.", "ok");
+        }
+
+        #endregion
+
+        #region Commands
+
+
+
+        #endregion
     }
 }

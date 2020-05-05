@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "829430273380",
+    "firebase_url": "https://pokeapp-276302.firebaseio.com",
+    "project_id": "pokeapp-276302",
+    "storage_bucket": "pokeapp-276302.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829430273380:android:1cbf564db96124d1be5671",
+        "android_client_info": {
+          "package_name": "com.companyname.PokeApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829430273380-jdaa5t6gp2fii0mj5m0vtiom98t0o106.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.PokeApp",
+            "certificate_hash": "42d9c745348f0dbf27e86fc8fe721629f5de4592"
+          }
+        },
+        {
+          "client_id": "829430273380-v4dflo5f99bfqp2ljm3cpfkqds9kp56t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrI3b9SSN6sw-YJayIhFbFvITk-HnMI-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829430273380-v4dflo5f99bfqp2ljm3cpfkqds9kp56t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

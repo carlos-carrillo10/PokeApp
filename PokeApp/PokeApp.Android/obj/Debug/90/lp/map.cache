@@ -1,4 +1,7 @@
+FFImageLoading.Forms.Platform
+FFImageLoading.Platform
 FormsViewGroup
+Plugin.Connectivity
 Prism.Forms
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Core.Runtime
@@ -39,5 +42,16 @@ Xamarin.Android.Support.v7.RecyclerView
 Xamarin.Android.Support.Vector.Drawable
 Xamarin.Android.Support.VersionedParcelable
 Xamarin.Android.Support.ViewPager
+Xamarin.Firebase.Auth
+Xamarin.Firebase.Auth.Interop
+Xamarin.Firebase.Common
+Xamarin.Firebase.Database.Collection
+Xamarin.Firebase.Database.Connection
+Xamarin.Firebase.Database
 Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
+Xamarin.Google.AutoValue.Annotations
+Xamarin.GooglePlayServices.Base
+Xamarin.GooglePlayServices.Basement
+Xamarin.GooglePlayServices.Flags
+Xamarin.GooglePlayServices.Tasks

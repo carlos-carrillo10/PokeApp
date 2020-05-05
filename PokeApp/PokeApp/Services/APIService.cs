@@ -1,10 +1,11 @@
-﻿using System;
+﻿using PokeApp.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokeApp.Services.Interfaces
+namespace PokeApp.Services
 {
     public class APIService : IAPIService
     {

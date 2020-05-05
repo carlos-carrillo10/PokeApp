@@ -1,0 +1,12 @@
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\bin\Debug\netstandard2.0\PokeApp.deps.json
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\bin\Debug\netstandard2.0\PokeApp.dll
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\bin\Debug\netstandard2.0\PokeApp.pdb
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\Views\LoginView.xaml.g.cs
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\PokeApp.csproj.CoreCompileInputs.cache
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\PokeApp.AssemblyInfoInputs.cache
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\PokeApp.AssemblyInfo.cs
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\XamlC.stamp
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\PokeApp.dll
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\PokeApp.pdb

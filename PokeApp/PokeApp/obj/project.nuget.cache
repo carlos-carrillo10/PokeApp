@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TOIuGk0j3H9e0a+8iq0G4WpsQrN7breiX7G4Yb9C4eUroxoCBPYMxSgS29I7T291tfjpRrmN9gKsWL6U5kz5sA==",
+  "dgSpecHash": "R7UNkSt/6e4ssO4tIeYiSSO7hNlaed+LgYbEG7NouKX+prtPUb7HBZdxc8Sa+3uqJgaSXkBOjIThOmXQM/Aawg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj",
+  "projectFilePath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rodri\\.nuget\\packages\\dryioc.dll\\4.0.4\\dryioc.dll.4.0.4.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
@@ -19,7 +19,10 @@
     "C:\\Users\\rodri\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
-    "C:\\Users\\rodri\\.nuget\\packages\\xamarin.forms\\3.6.0.344457\\xamarin.forms.3.6.0.344457.nupkg.sha512"
+    "C:\\Users\\rodri\\.nuget\\packages\\xam.plugin.connectivity\\3.2.0\\xam.plugin.connectivity.3.2.0.nupkg.sha512",
+    "C:\\Users\\rodri\\.nuget\\packages\\xamarin.ffimageloading\\2.4.11.982\\xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
+    "C:\\Users\\rodri\\.nuget\\packages\\xamarin.ffimageloading.forms\\2.4.11.982\\xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
+    "C:\\Users\\rodri\\.nuget\\packages\\xamarin.forms\\4.6.0.726\\xamarin.forms.4.6.0.726.nupkg.sha512"
   ],
   "logs": []
 }

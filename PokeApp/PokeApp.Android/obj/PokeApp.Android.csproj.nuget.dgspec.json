@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp.Android\\PokeApp.Android.csproj": {}
+    "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.Android\\PokeApp.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp.Android\\PokeApp.Android.csproj": {
+    "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.Android\\PokeApp.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp.Android\\PokeApp.Android.csproj",
+        "projectUniqueName": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.Android\\PokeApp.Android.csproj",
         "projectName": "PokeApp.Android",
-        "projectPath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp.Android\\PokeApp.Android.csproj",
+        "projectPath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.Android\\PokeApp.Android.csproj",
         "packagesPath": "C:\\Users\\rodri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp.Android\\obj\\",
+        "outputPath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
-              "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj": {
-                "projectPath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj"
+              "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj": {
+                "projectPath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj"
               }
             }
           }
@@ -45,6 +45,10 @@
             "Prism.DryIoc.Forms": {
               "target": "Package",
               "version": "[7.2.0.1367, )"
+            },
+            "Xam.Plugin.Connectivity": {
+              "target": "Package",
+              "version": "[3.2.0, )"
             },
             "Xamarin.Android.Support.CustomTabs": {
               "target": "Package",
@@ -70,22 +74,34 @@
               "target": "Package",
               "version": "[28.0.0.1, )"
             },
+            "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
+            "Xamarin.Firebase.Auth": {
+              "target": "Package",
+              "version": "[71.1605.0, )"
+            },
+            "Xamarin.Firebase.Database": {
+              "target": "Package",
+              "version": "[71.1601.0, )"
+            },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[3.6.0.344457, )"
+              "version": "[4.6.0.726, )"
             }
           }
         }
       }
     },
-    "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj": {
+    "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj",
+        "projectUniqueName": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj",
         "projectName": "PokeApp",
-        "projectPath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj",
+        "projectPath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj",
         "packagesPath": "C:\\Users\\rodri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\obj\\",
+        "outputPath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -127,9 +143,17 @@
               "target": "Package",
               "version": "[7.2.0.1367, )"
             },
+            "Xam.Plugin.Connectivity": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[3.6.0.344457, )"
+              "version": "[4.6.0.726, )"
             }
           },
           "imports": [

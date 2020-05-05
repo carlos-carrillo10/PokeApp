@@ -3,9 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
              x:Class="PokeApp.App">
-	<Application.Resources>
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- FontFamily -->
+            <OnPlatform x:Key="GilroyFont"
+                    x:TypeArguments="x:String"
+                    iOS="Gilroy-Light"
+                    Android="Gilroy-Light.otf#Gilroy"/>
 
-		<!-- Application resource dictionary -->
+            <!-- style for Label -->
+            <Style x:Key="labelFontStyle"
+               TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+             Value="{StaticResource GilroyFont}" />
+            </Style>
 
-	</Application.Resources>
+            <Style x:Key="entryFontStyle"
+               TargetType="{x:Type Entry}">
+                <Setter Property="FontFamily"
+             Value="{StaticResource GilroyFont}" />
+            </Style>
+            
+            <Style x:Key="buttonFontStyle"
+               TargetType="{x:Type Button}">
+                <Setter Property="FontFamily"
+             Value="{StaticResource GilroyFont}" />
+            </Style>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
 </prism:PrismApplication>

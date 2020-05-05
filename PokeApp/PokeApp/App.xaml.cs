@@ -4,6 +4,8 @@ using PokeApp.ViewModels;
 using PokeApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using PokeApp.Services.Interfaces;
+using PokeApp.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PokeApp
@@ -23,13 +25,21 @@ namespace PokeApp
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("LoginView");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
+
+
+            #region Dependency Injection
+
+            containerRegistry.RegisterSingleton<IAPIService, APIService>();
+
+            #endregion
         }
     }
 }

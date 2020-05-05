@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Firebase;
 using Prism;
 using Prism.Ioc;
 
@@ -17,6 +18,16 @@ namespace PokeApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+
+            var options = new FirebaseOptions.Builder()
+                    .SetApplicationId("1:829430273380:android:1cbf564db96124d1be5671")
+                    .SetApiKey("AIzaSyDrI3b9SSN6sw-YJayIhFbFvITk-HnMI-k")
+                    .SetDatabaseUrl("https://pokeapp-276302.firebaseio.com")
+                    .Build();
+            FirebaseApp.InitializeApp(this, options);
+
             LoadApplication(new App(new AndroidInitializer()));
         }
     }

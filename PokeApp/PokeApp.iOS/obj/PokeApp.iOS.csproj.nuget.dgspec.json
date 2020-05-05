@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp.iOS\\PokeApp.iOS.csproj": {}
+    "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.iOS\\PokeApp.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp.iOS\\PokeApp.iOS.csproj": {
+    "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.iOS\\PokeApp.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp.iOS\\PokeApp.iOS.csproj",
+        "projectUniqueName": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.iOS\\PokeApp.iOS.csproj",
         "projectName": "PokeApp.iOS",
-        "projectPath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp.iOS\\PokeApp.iOS.csproj",
+        "projectPath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.iOS\\PokeApp.iOS.csproj",
         "packagesPath": "C:\\Users\\rodri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp.iOS\\obj\\",
+        "outputPath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.iOS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj": {
-                "projectPath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj"
+              "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj": {
+                "projectPath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj"
               }
             }
           }
@@ -46,9 +46,21 @@
               "target": "Package",
               "version": "[7.2.0.1367, )"
             },
+            "Xam.Plugin.Connectivity": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
+            "Xamarin.Firebase.iOS.Auth": {
+              "target": "Package",
+              "version": "[6.5.1, )"
+            },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[3.6.0.344457, )"
+              "version": "[4.6.0.726, )"
             }
           }
         }
@@ -65,14 +77,14 @@
         }
       }
     },
-    "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj": {
+    "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj",
+        "projectUniqueName": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj",
         "projectName": "PokeApp",
-        "projectPath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\PokeApp.csproj",
+        "projectPath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\PokeApp.csproj",
         "packagesPath": "C:\\Users\\rodri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rodri\\Desktop\\PokeApp\\PokeApp\\obj\\",
+        "outputPath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -114,9 +126,17 @@
               "target": "Package",
               "version": "[7.2.0.1367, )"
             },
+            "Xam.Plugin.Connectivity": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Xamarin.FFImageLoading.Forms": {
+              "target": "Package",
+              "version": "[2.4.11.982, )"
+            },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[3.6.0.344457, )"
+              "version": "[4.6.0.726, )"
             }
           },
           "imports": [

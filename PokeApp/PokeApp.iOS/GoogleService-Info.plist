@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>829430273380-8so2m019f1537akc8iorqd5ljkljhllc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.829430273380-8so2m019f1537akc8iorqd5ljkljhllc</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>829430273380-jdaa5t6gp2fii0mj5m0vtiom98t0o106.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBz-ru9qJ0zG23p1A2VG2Y9YwHlkhO6sjE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>829430273380</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.companyname.PokeApp</string>
+	<key>PROJECT_ID</key>
+	<string>pokeapp-276302</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pokeapp-276302.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:829430273380:ios:78d5e552af8c2a27be5671</string>
+	<key>DATABASE_URL</key>
+	<string>https://pokeapp-276302.firebaseio.com</string>
+</dict>
+</plist>
