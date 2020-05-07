@@ -1,4 +1,7 @@
 ﻿using Foundation;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
 using UIKit;
@@ -23,8 +26,14 @@ namespace PokeApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+
             LoadApplication(new App(new iOSInitializer()));
+
             Firebase.Core.App.Configure();
+
+            AppCenter.Start("c874f653-44dd-45f8-aed1-c5bc045ca45f",
+                   typeof(Analytics), typeof(Crashes));
+
             return base.FinishedLaunching(app, options);
         }
     }

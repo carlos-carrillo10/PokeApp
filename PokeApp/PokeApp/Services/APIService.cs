@@ -1,4 +1,5 @@
-﻿using PokeApp.Services.Interfaces;
+﻿using Newtonsoft.Json;
+using PokeApp.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -19,14 +20,34 @@ namespace PokeApp.Services
             _httpClient.BaseAddress = new Uri(Constants.BaseAddress);
         }
 
-        public Task<T> GetAsync<T>(string URL)
+        public async Task<T> GetAsync<T>(string URL)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.GetAsync(URL);
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(data);
+            }
+            else
+            {
+                return default(T);
+            }
         }
 
-        public Task<T> PostAsync<T>(string URL, object data)
+        public async Task<T> PostAsync<T>(string URL, object data)
         {
-            throw new NotImplementedException();
+            var jsonToSend = JsonConvert.SerializeObject(data, Formatting.None);
+            var body = new StringContent(jsonToSend, Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(URL.ToString(), body);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(result);
+            }
+            else
+            {
+                return default(T);
+            }
         }
     }
 }

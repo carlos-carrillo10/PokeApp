@@ -19,18 +19,26 @@ namespace PokeApp.Droid.Services
 {
     public class FirebaseAuthDroid : IFirebaseAuth
     {
-        public async Task<string> LoginWithEmailPassword(string email, string password)
+        public async Task<Dictionary<string, string>> LoginWithEmailPassword(string email, string password)
         {
             try
             {
                 var user = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
-                var token = await user.User.GetIdTokenAsync(false);
-                return token.Token;
+                if (user != null)
+                {
+                    var dic = new Dictionary<string, string>();
+                    dic.Add("Token", (await user.User.GetIdTokenAsync(false)).Token);
+                    dic.Add("UserId", user.User.Uid);
+                    return dic;
+                }
+                else
+                    return default(Dictionary<string, string>);
+              
             }
             catch (FirebaseAuthInvalidUserException e)
             {
                 e.PrintStackTrace();
-                return "";
+                return default(Dictionary<string, string>);
             }
         }
     }

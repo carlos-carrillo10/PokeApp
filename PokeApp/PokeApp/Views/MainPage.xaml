@@ -1,11 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:PokeApp.Controls"    
              x:Class="PokeApp.Views.MainPage"
+             NavigationPage.HasNavigationBar="True"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
+    <Grid VerticalOptions="FillAndExpand"
+          HorizontalOptions="FillAndExpand">
+        <Label Text="No data"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"
+               IsVisible="{Binding IsEmpty}"/>
+        <controls:CustomListView Grid.Row="0"
+                  ItemsSource="{Binding RegionsList}"
+                  SelectedItem="{Binding RegionSelected}"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame VerticalOptions="FillAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               Margin="10"
+                               CornerRadius="5">
+                            <Grid VerticalOptions="Fill"
+                                  HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ff:CachedImage Source="{Binding image, Converter={StaticResource RegionImageConverter}}"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center"
+                                                Grid.Column="0"
+                                                Aspect="AspectFit"
+                                                WidthRequest="100"
+                                                HeightRequest="100"/>
+                                <Label Text="{Binding name}"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       FontAttributes="Bold"
+                                       FontSize="Large"
+                                       Style="{StaticResource labelFontStyle}"
+                                       />
+                            </Grid>
+                        </Frame>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </controls:CustomListView>
+
+    </Grid>
 
 </ContentPage>

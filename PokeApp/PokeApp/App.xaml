@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
-             x:Class="PokeApp.App">
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:converters="clr-namespace:PokeApp.Converters"
+                        xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+                        x:Class="PokeApp.App">
     <Application.Resources>
         <ResourceDictionary>
             <!-- FontFamily -->
@@ -11,7 +12,7 @@
                     iOS="Gilroy-Light"
                     Android="Gilroy-Light.otf#Gilroy"/>
 
-            <!-- style for Label -->
+            <!-- Styles-->
             <Style x:Key="labelFontStyle"
                TargetType="{x:Type Label}">
                 <Setter Property="FontFamily"
@@ -23,13 +24,20 @@
                 <Setter Property="FontFamily"
              Value="{StaticResource GilroyFont}" />
             </Style>
-            
+
             <Style x:Key="buttonFontStyle"
                TargetType="{x:Type Button}">
                 <Setter Property="FontFamily"
              Value="{StaticResource GilroyFont}" />
             </Style>
 
+
+            <!--Converters-->
+            <converters:RegionImageConverter x:Key="RegionImageConverter" />
+            <converters:PokemonImageConverter x:Key="PokemonImageConverter" />
+            <converters:SelectedColorConverter x:Key="SelectedColorConverter" />
+            
+            
         </ResourceDictionary>
 
     </Application.Resources>

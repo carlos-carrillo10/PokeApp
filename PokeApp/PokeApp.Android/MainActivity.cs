@@ -2,6 +2,9 @@
 using Android.Content.PM;
 using Android.OS;
 using Firebase;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
 
@@ -10,6 +13,7 @@ namespace PokeApp.Droid
     [Activity(Label = "PokeApp", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        public static FirebaseApp app;
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -21,12 +25,17 @@ namespace PokeApp.Droid
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
 
+            AppCenter.Start("5e140adf-f042-4958-b98b-d832a82a4d21",
+                   typeof(Analytics), typeof(Crashes));
+
             var options = new FirebaseOptions.Builder()
                     .SetApplicationId("1:829430273380:android:1cbf564db96124d1be5671")
                     .SetApiKey("AIzaSyDrI3b9SSN6sw-YJayIhFbFvITk-HnMI-k")
                     .SetDatabaseUrl("https://pokeapp-276302.firebaseio.com")
                     .Build();
-            FirebaseApp.InitializeApp(this, options);
+
+            if (app == null)
+                app = FirebaseApp.InitializeApp(this, options);
 
             LoadApplication(new App(new AndroidInitializer()));
         }

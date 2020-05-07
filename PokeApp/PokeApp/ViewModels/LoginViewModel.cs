@@ -8,21 +8,20 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
+
 namespace PokeApp.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
         #region Variables
 
-        private IAPIService _apiService;
         private INavigationService _navigationService;
 
         #endregion
 
-        public LoginViewModel(INavigationService navigationService, IAPIService apiService)
+        public LoginViewModel(INavigationService navigationService)
             : base(navigationService)
         {
-            _apiService = apiService;
             _navigationService = navigationService;
 
             #region Commands logic
@@ -43,7 +42,7 @@ namespace PokeApp.ViewModels
                 }
 
                 if (await MakeLogin())
-                    await _navigationService.NavigateAsync("NavigationPage/MainPage");
+                    await _navigationService.NavigateAsync("/MainPage");
 
             });
 
@@ -86,9 +85,9 @@ namespace PokeApp.ViewModels
             try
             {
                 var service = DependencyService.Get<IFirebaseAuth>();
-                var token = await service.LoginWithEmailPassword(Email, Password);
+                var result = await service.LoginWithEmailPassword(Email, Password);
 
-                if (!string.IsNullOrEmpty(token))
+                if (result != null)
                     return true;
                 else 
                 {

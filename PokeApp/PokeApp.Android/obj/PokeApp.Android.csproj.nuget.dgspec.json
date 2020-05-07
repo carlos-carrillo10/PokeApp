@@ -42,6 +42,18 @@
       "frameworks": {
         "monoandroid90": {
           "dependencies": {
+            "FirebaseDatabase.net": {
+              "target": "Package",
+              "version": "[4.0.4, )"
+            },
+            "Microsoft.AppCenter.Analytics": {
+              "target": "Package",
+              "version": "[3.2.1, )"
+            },
+            "Microsoft.AppCenter.Crashes": {
+              "target": "Package",
+              "version": "[3.2.1, )"
+            },
             "Prism.DryIoc.Forms": {
               "target": "Package",
               "version": "[7.2.0.1367, )"
@@ -133,11 +145,27 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "FirebaseDatabase.net": {
+              "target": "Package",
+              "version": "[4.0.4, )"
+            },
+            "Microsoft.AppCenter.Analytics": {
+              "target": "Package",
+              "version": "[3.2.1, )"
+            },
+            "Microsoft.AppCenter.Crashes": {
+              "target": "Package",
+              "version": "[3.2.1, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             },
             "Prism.DryIoc.Forms": {
               "target": "Package",

@@ -7,6 +7,6 @@ namespace PokeApp.Services.Interfaces
 {
     public interface IFirebaseAuth
     {
-        Task<string> LoginWithEmailPassword(string email, string password);
+        Task<Dictionary<string, string>> LoginWithEmailPassword(string email, string password);
     }
 }

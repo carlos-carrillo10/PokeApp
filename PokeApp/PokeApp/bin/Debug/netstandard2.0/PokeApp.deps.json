@@ -9,7 +9,11 @@
     ".NETStandard,Version=v2.0/": {
       "PokeApp/1.0.0": {
         "dependencies": {
+          "FirebaseDatabase.net": "4.0.4",
+          "Microsoft.AppCenter.Analytics": "3.2.1",
+          "Microsoft.AppCenter.Crashes": "3.2.1",
           "NETStandard.Library": "2.0.3",
+          "Newtonsoft.Json": "12.0.3",
           "Prism.DryIoc.Forms": "7.2.0.1367",
           "Xam.Plugin.Connectivity": "3.2.0",
           "Xamarin.FFImageLoading.Forms": "2.4.11.982",
@@ -30,11 +34,74 @@
           }
         }
       },
+      "FirebaseDatabase.net/4.0.4": {
+        "dependencies": {
+          "LiteDB": "4.1.4",
+          "Newtonsoft.Json": "12.0.3",
+          "System.Reactive": "4.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Firebase.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "LiteDB/4.1.4": {
+        "dependencies": {
+          "System.Reflection": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/LiteDB.dll": {
+            "assemblyVersion": "4.1.4.0",
+            "fileVersion": "4.1.4.0"
+          }
+        }
+      },
+      "Microsoft.AppCenter/3.2.1": {
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "3.2.1.0"
+          }
+        }
+      },
+      "Microsoft.AppCenter.Analytics/3.2.1": {
+        "dependencies": {
+          "Microsoft.AppCenter": "3.2.1"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.Analytics.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "3.2.1.0"
+          }
+        }
+      },
+      "Microsoft.AppCenter.Crashes/3.2.1": {
+        "dependencies": {
+          "Microsoft.AppCenter": "3.2.1"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.Crashes.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "3.2.1.0"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
         }
       },
       "Prism.Core/7.2.0.1367": {
@@ -76,6 +143,17 @@
           "System.Runtime": "4.3.0",
           "System.Text.Encoding": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
+        }
+      },
+      "System.Reactive/4.0.0": {
+        "dependencies": {
+          "System.Runtime.InteropServices.WindowsRuntime": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Reactive.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.398"
+          }
         }
       },
       "System.Reflection/4.3.0": {
@@ -121,10 +199,33 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.Reflection.TypeExtensions/4.3.0": {
+        "dependencies": {
+          "System.Reflection": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.5/System.Reflection.TypeExtensions.dll": {
+            "assemblyVersion": "4.1.1.0",
+            "fileVersion": "4.6.24705.1"
+          }
+        }
+      },
       "System.Runtime/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0"
+        }
+      },
+      "System.Runtime.InteropServices.WindowsRuntime/4.3.0": {
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Runtime.InteropServices.WindowsRuntime.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.24705.1"
+          }
         }
       },
       "System.Text.Encoding/4.3.0": {
@@ -211,6 +312,41 @@
       "path": "dryioc.dll/4.0.4",
       "hashPath": "dryioc.dll.4.0.4.nupkg.sha512"
     },
+    "FirebaseDatabase.net/4.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XkdKzFT4rU7x1GEO3v0bGmLT7eXDZ/kHa+77mCHn9LP2KjCEQqt1R5tIctwmlaOEVy66Eb4QxHJ5rjaG8Et1/A==",
+      "path": "firebasedatabase.net/4.0.4",
+      "hashPath": "firebasedatabase.net.4.0.4.nupkg.sha512"
+    },
+    "LiteDB/4.1.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g4g9JlHzRBZl+Gd2UbiRdszZ7t8wozU2wX7+5xY5uE79tmcgcDhha+ubAP84G1VLbwQmhBGCzRfIx+epLmJciQ==",
+      "path": "litedb/4.1.4",
+      "hashPath": "litedb.4.1.4.nupkg.sha512"
+    },
+    "Microsoft.AppCenter/3.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3t2lTMEbhDNPEXCurKBS8wRag4xtloGm9E7F4DpLIRhJtTCYgcIwvajPYj3WE0LjSzhrMKEn9tCaORHDAsdmaw==",
+      "path": "microsoft.appcenter/3.2.1",
+      "hashPath": "microsoft.appcenter.3.2.1.nupkg.sha512"
+    },
+    "Microsoft.AppCenter.Analytics/3.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-38HJ5GxKMI3Hyy32SiPxcZfOEL8aBKcV2MR/BLCKR9VlNt4ZpbdJLU/4yoFi/n8zkyFkJykVSA8ADtOjekYseA==",
+      "path": "microsoft.appcenter.analytics/3.2.1",
+      "hashPath": "microsoft.appcenter.analytics.3.2.1.nupkg.sha512"
+    },
+    "Microsoft.AppCenter.Crashes/3.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-T3nFFv+Zq0oGHawKkqo6x6Aox+dITbKxsTuDMtuyTStTEhKuwXuIx08xoViMF0oDHjYk0NHSZICOVKoUjwuBzQ==",
+      "path": "microsoft.appcenter.crashes/3.2.1",
+      "hashPath": "microsoft.appcenter.crashes.3.2.1.nupkg.sha512"
+    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
@@ -231,6 +367,13 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
     },
     "Prism.Core/7.2.0.1367": {
       "type": "package",
@@ -260,6 +403,13 @@
       "path": "system.io/4.3.0",
       "hashPath": "system.io.4.3.0.nupkg.sha512"
     },
+    "System.Reactive/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yaVAxT2Yl28p9+DupGwj2oPbIOYZUQimOQ+n7N7vML2oofIRj9BmcfD7DHc6FLrNah65EigOgG6U9VnwWEyz5g==",
+      "path": "system.reactive/4.0.0",
+      "hashPath": "system.reactive.4.0.0.nupkg.sha512"
+    },
     "System.Reflection/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -288,12 +438,26 @@
       "path": "system.reflection.primitives/4.3.0",
       "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
     },
+    "System.Reflection.TypeExtensions/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
+      "path": "system.reflection.typeextensions/4.3.0",
+      "hashPath": "system.reflection.typeextensions.4.3.0.nupkg.sha512"
+    },
     "System.Runtime/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
       "path": "system.runtime/4.3.0",
       "hashPath": "system.runtime.4.3.0.nupkg.sha512"
+    },
+    "System.Runtime.InteropServices.WindowsRuntime/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-J4GUi3xZQLUBasNwZnjrffN8i5wpHrBtZoLG+OhRyGo/+YunMRWWtwoMDlUAIdmX0uRfpHIBDSV6zyr3yf00TA==",
+      "path": "system.runtime.interopservices.windowsruntime/4.3.0",
+      "hashPath": "system.runtime.interopservices.windowsruntime.4.3.0.nupkg.sha512"
     },
     "System.Text.Encoding/4.3.0": {
       "type": "package",

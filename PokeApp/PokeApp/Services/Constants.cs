@@ -8,5 +8,6 @@ namespace PokeApp.Services
     {
         public const string BaseAddress = "https://pokeapi.co/api/v2/";
         public const string Regions = "region/";
+        public const string Pokedex = "pokedex/";
     }
 }
