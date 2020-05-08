@@ -109,7 +109,8 @@ namespace PokeApp.ViewModels
              
                     var navigationParams = new NavigationParameters();
                     navigationParams.Add("pokedexes", values.pokedexes);
-                    await _navigationService.NavigateAsync("NavigationPage/PokemonRegionView", navigationParams);
+                    navigationParams.Add("RegionName", values.name);
+                    await _navigationService.NavigateAsync("RegionGruposView", navigationParams);
                 }
                 else
                     ErrorAlert();

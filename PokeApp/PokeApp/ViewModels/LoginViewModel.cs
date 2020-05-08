@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 
@@ -23,6 +24,11 @@ namespace PokeApp.ViewModels
             : base(navigationService)
         {
             _navigationService = navigationService;
+
+#if DEBUG
+            Email = "test@pokeapp.com";
+            Password = "Test123!";
+#endif
 
             #region Commands logic
 
@@ -42,7 +48,7 @@ namespace PokeApp.ViewModels
                 }
 
                 if (await MakeLogin())
-                    await _navigationService.NavigateAsync("/MainPage");
+                    await _navigationService.NavigateAsync("NavigationPage/MainPage");
 
             });
 
@@ -84,15 +90,21 @@ namespace PokeApp.ViewModels
         {
             try
             {
+
+                //save to secure storage
                 var service = DependencyService.Get<IFirebaseAuth>();
                 var result = await service.LoginWithEmailPassword(Email, Password);
 
                 if (result != null)
+                {
+                    await SecureStorage.SetAsync("Token", result["Token"]);
+                    await SecureStorage.SetAsync("UserId", result["UserId"]);
                     return true;
+                }
                 else 
                 {
                     await App.Current.MainPage.DisplayAlert("Error",
-                                                     "Email o Password incorrectos", "ok");
+                                                     "Email or Password is wrong", "ok");
                     return false;
                 }
             }

@@ -7,14 +7,17 @@ namespace PokeApp.FireBaseRepository.Interfaces
 {
     public interface IBaseRepository<T> where T : class
     {
-        Task<IEnumerable<T>> GetData<T>();
-        Task<T> GetDataById(int id);
-        Task<bool> SaveData<T>(T value);
-        Task<bool> SaveDataRange<T>(IEnumerable<T> values);
-        Task<bool> UpdateData<T>(T value);
-        Task<bool> UpdateDataRange<T>(IEnumerable<T> values);
-        Task<bool> DeleteData(int id);
-        Task<int> GetLastID();
+        Task<IEnumerable<T>> GetAllData(string UserId, string Region);
+        Task<T> GetDataById(int id, string UserId, string Region);
+        Task<T> GetDataByName(string Name, string UserId, string Region);
+        Task<IEnumerable<T>> GetAllDataById(int id, string UserId, string Region);
+        Task<IEnumerable<T>> GetAllDataByName(string Name, string UserId);
+        Task<bool> SaveData(T value);
+        Task<bool> SaveDataRange(IEnumerable<T> values);
+        Task<bool> UpdateData(T value);
+        Task<bool> UpdateDataRange(IEnumerable<T> values);
+        Task<bool> DeleteData(int id, string UserId, string Region);
+        Task<int> GetLastID(string UserId, string Region);
 
     }
 }

@@ -4975,9 +4975,11 @@ public final class R {
     public static final int notify_panel_notification_icon_bg=0x7f07014f;
     public static final int pokeball=0x7f070150;
     public static final int pokeballimg=0x7f070151;
-    public static final int pokemonlogo=0x7f070152;
-    public static final int tooltip_frame_dark=0x7f070153;
-    public static final int tooltip_frame_light=0x7f070154;
+    public static final int pokeballlogo=0x7f070152;
+    public static final int pokemongo=0x7f070153;
+    public static final int pokemonlogo=0x7f070154;
+    public static final int tooltip_frame_dark=0x7f070155;
+    public static final int tooltip_frame_light=0x7f070156;
   }
   public static final class id {
     public static final int ALT=0x7f080000;
@@ -5365,7 +5367,9 @@ public final class R {
     public static final int ic_launcher=0x7f0c0002;
     public static final int pokeball=0x7f0c0003;
     public static final int pokeballimg=0x7f0c0004;
-    public static final int pokemonlogo=0x7f0c0005;
+    public static final int pokeballlogo=0x7f0c0005;
+    public static final int pokemongo=0x7f0c0006;
+    public static final int pokemonlogo=0x7f0c0007;
   }
   public static final class string {
     public static final int abc_action_bar_home_description=0x7f0d0000;
@@ -17899,5 +17903,8 @@ public final class R {
      * @attr name android:inflatedId
      */
     public static final int ViewStubCompat_android_inflatedId=2;
+  }
+  public static final class xml {
+    public static final int xamarin_essentials_fileprovider_file_paths=0x7f100000;
   }
 }

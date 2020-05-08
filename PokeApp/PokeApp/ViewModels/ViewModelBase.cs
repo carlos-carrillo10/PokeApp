@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using PokeApp.Models.FirebaseDatabase;
+using PokeApp.Models.Regions;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -43,6 +45,14 @@ namespace PokeApp.ViewModels
 
         }
 
+        #region Variables
+
+        public static List<Pokedex> PokedexInfo;
+        public static int GroupId { get; set; }
+        public static GruposRegion GruposRegion { get; set; }
+
+        #endregion
+
         #region Bindable Properties
 
         private bool _isLoading;
@@ -76,13 +86,13 @@ namespace PokeApp.ViewModels
         public async void NoInternetAlert()
         {
             await App.Current.MainPage.DisplayAlert("No hay Conexión a Internet",
-                                                      "Por favor revisa tu conexión a internet e intentalo de nuevo.", "ok");
+                                                      "There is a problem with you internet connection. Please, try again", "ok");
         }
 
         public async void ErrorAlert()
         {
             await App.Current.MainPage.DisplayAlert("Error",
-                                                     "Lo sentimos, ha surgido un inconveniente. Por favor, intentalo más tarde.", "ok");
+                                                     "There is a problem to process this action. Please, try again", "ok");
         }
 
         #endregion

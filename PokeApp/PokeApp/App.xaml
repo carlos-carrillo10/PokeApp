@@ -36,6 +36,8 @@
             <converters:RegionImageConverter x:Key="RegionImageConverter" />
             <converters:PokemonImageConverter x:Key="PokemonImageConverter" />
             <converters:SelectedColorConverter x:Key="SelectedColorConverter" />
+            <converters:BoolConverter x:Key="BoolConverter" />
+            <converters:GroupsImageConverter x:Key="GroupsImageConverter" />
             
             
         </ResourceDictionary>

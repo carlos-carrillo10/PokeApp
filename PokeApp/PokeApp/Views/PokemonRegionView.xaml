@@ -6,16 +6,102 @@
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:controls="clr-namespace:PokeApp.Controls"
              Title="{Binding Title}"
+             NavigationPage.HasBackButton="False"
              mc:Ignorable="d"
              x:Class="PokeApp.Views.PokemonRegionView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveGroup}"/>
+        <ToolbarItem Text="Cancel" Command="{Binding CancelCreation}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid VerticalOptions="FillAndExpand"
           HorizontalOptions="FillAndExpand">
-            <Label Text="No data"
-               VerticalOptions="CenterAndExpand"
-               HorizontalOptions="CenterAndExpand"
-               IsVisible="{Binding IsEmpty}"/>
-            <controls:CustomListView Grid.Row="0"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"
+                  Margin="5,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0"
+                           Grid.Row="0"
+                           Text="Group name:"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           Style="{StaticResource labelFontStyle}"/>
+                <Entry Grid.Column="1"
+                           Grid.Row="0"
+                           Text="{Binding GroupName}"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="Medium"
+                           Style="{StaticResource labelFontStyle}"/>
+                <Label Grid.Column="0"
+                           Grid.Row="1"
+                           Text="Group type:"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           Style="{StaticResource labelFontStyle}"/>
+                <Entry Grid.Column="1"
+                           Grid.Row="1"
+                           Text="{Binding GroupType}"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="Medium"
+                           Style="{StaticResource labelFontStyle}"/>
+                <Label Grid.Column="0"
+                           Grid.Row="2"
+                           Text="Pokedex description:"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           Style="{StaticResource labelFontStyle}"/>
+                <Entry Grid.Column="1"
+                           Grid.Row="2"
+                           Text="{Binding PokedexDescription}"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="Medium"
+                           Style="{StaticResource labelFontStyle}"/>
+                <Label Grid.Column="0"
+                           Grid.Row="3"
+                           Text="Pokemons selected:"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="Medium"
+                           Style="{StaticResource labelFontStyle}"/>
+                <Label Grid.Column="1"
+                           Grid.Row="3"
+                           FontSize="Medium"
+                           VerticalOptions="FillAndExpand"
+                           HorizontalOptions="EndAndExpand"
+                           Text="{Binding PokemonsCounter, StringFormat='{0}/6'}"
+                           Style="{StaticResource entryFontStyle}"/>
+            </Grid>
+                <Label Text="No data"
+                   Grid.Row="2"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   IsVisible="{Binding IsEmpty}"/>
+            <controls:CustomListView Grid.Row="2"
                   ItemsSource="{Binding PokemonList}"
                   SelectedItem="{Binding PokemonSelected}"
                   HasUnevenRows="True"

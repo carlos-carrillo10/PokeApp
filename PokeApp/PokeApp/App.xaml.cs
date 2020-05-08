@@ -11,6 +11,7 @@ using PokeApp.FireBaseRepository.Repositories;
 using PokeApp.FirebaseRepository.Interfaces;
 using PokeApp.Models.FirebaseDatabase;
 using PokeApp.FirebaseRepository;
+using Xamarin.Essentials;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PokeApp
@@ -30,7 +31,13 @@ namespace PokeApp
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("MainPage");
+            if (await SecureStorage.GetAsync("UserId") != null)
+                await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            else
+                await NavigationService.NavigateAsync("LoginView");
+
+            // await NavigationService.NavigateAsync("NavigationPage/MainPage");
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -42,6 +49,8 @@ namespace PokeApp
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
             containerRegistry.RegisterForNavigation<PokemonRegionView, PokemonRegionViewModel>();
+            containerRegistry.RegisterForNavigation<RegionGruposView, RegionGruposViewModel>();
+            containerRegistry.RegisterForNavigation<GrupoDetailsView, GrupoDetailsViewModel>();
 
             #endregion
 

@@ -25,30 +25,28 @@ namespace PokeApp.FireBaseRepository.Repositories
         }
         #endregion
 
-        public BaseRepository()
-        {
-
-        }
-
-        public async Task<IEnumerable<T>> GetData<T>()
+        public async Task<IEnumerable<T>>GetAllData(string UserId, string Region)
         {
             try
             {
                 var values = await GetInstance().Child(typeof(T).Name).OnceAsync<T>();
-                return values.Select(x => x.Object).ToList();
+                if (values.Count > 0)
+                    return values.Select(x => x.Object).ToList();
+                else
+                    return new List<T>();
             }
             catch (Exception ex)
             {
-                return default;
+                return new List<T>();
             }
         }
 
-        public async Task<bool> SaveData<T>(T value)
+        public async Task<bool> SaveData(T value)
         {
             try
             {
                 var values = JsonConvert.SerializeObject(value);
-                var a = await GetInstance().Child(typeof(T).Name).PostAsync(values);
+                await GetInstance().Child(typeof(T).Name).PostAsync(values);
                 return true;
             }
             catch (Exception ex)
@@ -57,46 +55,51 @@ namespace PokeApp.FireBaseRepository.Repositories
             }
         }
 
-        public async Task<bool> SaveDataRange<T>(IEnumerable<T> values)
-        {
-            try
-            {
-                foreach (var item in values)
-                {
-                    var val = JsonConvert.SerializeObject(item);
-                    var a = await GetInstance().Child(typeof(T).Name).PostAsync(val);
-                }            
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-        public Task<T> GetDataById(int id)
+      
+        public Task<T> GetDataById(int id, string UserId, string Region)
         {
             return default;
         }
 
-        public Task<bool> UpdateData<T>(T value)
+        public Task<bool> UpdateData(T value)
         {
             return default;
         }
 
-        public Task<bool> UpdateDataRange<T>(IEnumerable<T> values)
+        public Task<bool> UpdateDataRange(IEnumerable<T> values)
         {
             return default;
         }
 
-        public Task<bool> DeleteData(int id)
+        public Task<bool> DeleteData(int id, string UserId, string Region)
         {
             return default;
         }
 
-        public async Task<int> GetLastID()
+        public async Task<int> GetLastID(string UserId, string Region)
         {
             return default;
         }
+
+        public Task<T> GetDataByName(string Name, string UserId, string Region)
+        {
+            return default;
+        }
+
+        public Task<IEnumerable<T>> GetAllDataById(int id, string UserId, string Region)
+        {
+            return default;
+        }
+
+        public Task<IEnumerable<T>> GetAllDataByName(string Name, string UserId)
+        {
+           return default;
+        }
+
+        public virtual Task<bool> SaveDataRange(IEnumerable<T> values)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

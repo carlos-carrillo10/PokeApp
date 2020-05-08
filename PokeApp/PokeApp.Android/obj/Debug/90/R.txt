@@ -1231,9 +1231,11 @@ int drawable notification_tile_bg 0x7f07014e
 int drawable notify_panel_notification_icon_bg 0x7f07014f
 int drawable pokeball 0x7f070150
 int drawable pokeballimg 0x7f070151
-int drawable pokemonlogo 0x7f070152
-int drawable tooltip_frame_dark 0x7f070153
-int drawable tooltip_frame_light 0x7f070154
+int drawable pokeballlogo 0x7f070152
+int drawable pokemongo 0x7f070153
+int drawable pokemonlogo 0x7f070154
+int drawable tooltip_frame_dark 0x7f070155
+int drawable tooltip_frame_light 0x7f070156
 int id ALT 0x7f080000
 int id CTRL 0x7f080001
 int id FUNCTION 0x7f080002
@@ -1611,7 +1613,9 @@ int mipmap defaultimage 0x7f0c0001
 int mipmap ic_launcher 0x7f0c0002
 int mipmap pokeball 0x7f0c0003
 int mipmap pokeballimg 0x7f0c0004
-int mipmap pokemonlogo 0x7f0c0005
+int mipmap pokeballlogo 0x7f0c0005
+int mipmap pokemongo 0x7f0c0006
+int mipmap pokemonlogo 0x7f0c0007
 int string abc_action_bar_home_description 0x7f0d0000
 int string abc_action_bar_up_description 0x7f0d0001
 int string abc_action_menu_overflow_description 0x7f0d0002
@@ -2987,3 +2991,4 @@ int[] styleable ViewStubCompat { 0x010100d0, 0x010100f2, 0x010100f3 }
 int styleable ViewStubCompat_android_id 0
 int styleable ViewStubCompat_android_layout 1
 int styleable ViewStubCompat_android_inflatedId 2
+int xml xamarin_essentials_fileprovider_file_paths 0x7f100000

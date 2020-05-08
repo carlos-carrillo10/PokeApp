@@ -64,6 +64,7 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Android.Support.Vector.Drawable.dll",
 		"Xamarin.Android.Support.VersionedParcelable.dll",
 		"Xamarin.Android.Support.ViewPager.dll",
+		"Xamarin.Essentials.dll",
 		"Xamarin.Firebase.Auth.dll",
 		"Xamarin.Firebase.Auth.Interop.dll",
 		"Xamarin.Firebase.Common.dll",

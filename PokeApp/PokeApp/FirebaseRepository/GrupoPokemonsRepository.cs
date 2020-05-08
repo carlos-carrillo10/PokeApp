@@ -13,16 +13,38 @@ namespace PokeApp.FirebaseRepository
 {
     public class GrupoPokemonsRepository : BaseRepository<GrupoPokemons>, IGrupoPokemonsRepository
     {
-        public async Task<GrupoPokemons> GetDataById(int id)
+
+        public async Task<GrupoPokemons> GetDataById(int id, string UserId, string Region)
         {
             try
             {
-                var allValues = await GetData<GrupoPokemons>();
-                return allValues.Where(a => a.Id == id).FirstOrDefault();
+                var value = await GetAllData(UserId, Region);
+                if (value != null)
+                    return value.Where(a => a.Id == id).FirstOrDefault();
+                else
+                    return default;
             }
             catch (Exception ex)
             {
                 return default;
+            }
+        }
+
+        public async Task<bool> SaveDataRange(IEnumerable<GrupoPokemons> values)
+        {
+            try
+            {
+                foreach (var item in values)
+                {
+                    item.Id = await GetLastID(string.Empty, string.Empty) + 1;
+                    var val = JsonConvert.SerializeObject(item);
+                    await GetInstance().Child(typeof(GrupoPokemons).Name).PostAsync(val);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 
@@ -85,10 +107,60 @@ namespace PokeApp.FirebaseRepository
             }
         }
 
-        public async Task<int> GetLastID()
+        public async Task<int> GetLastID(string UserId, string Region)
         {
-            return (await GetData<GrupoPokemons>()).OrderBy(x => x.Id).LastOrDefault().Id;
+            try
+            {
+                var value = await GetAllData(UserId, Region);
+                if (value != null)
+                    return value.OrderBy(x => x.Id).LastOrDefault().Id;
+                else
+                    return 0;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+
         }
 
+        public async Task<bool> DeteleDataByGrupoId(int GrupoId)
+        {
+            try
+            {
+                //GetKey 
+                var valuesToDelete = (await GetInstance().Child(typeof(GrupoPokemons).Name)
+                    .OnceAsync<GrupoPokemons>()).Where(x => x.Object.GroupId == GrupoId).ToList();
+
+                foreach (var item in valuesToDelete)
+                {
+                    await GetInstance().Child(typeof(GrupoPokemons).Name).Child(item.Key).DeleteAsync();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public async Task<IEnumerable<GrupoPokemons>> GetDataByGrupoId(int GrupoId)
+        {
+            try
+            {
+                //GetKey 
+                var values = await GetInstance().Child(typeof(GrupoPokemons).Name).OnceAsync<GrupoPokemons>();
+                if (values.Count > 0)
+                    return values.Where(x => x.Object.GroupId == GrupoId).ToList().Select(x => x.Object);
+                else
+                    return default;
+
+            }
+            catch (Exception ex)
+            {
+                return default;
+            }
+        }
     }
 }

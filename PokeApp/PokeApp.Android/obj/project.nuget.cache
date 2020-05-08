@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZZgKCyvH2ZIuovKzaulERdyZ3VNwc8gVoAUIw5X4fezoJMtBuARbGP0Ilo0dSwVPaEsiPa89Tu0WDNk0PS9NGg==",
+  "dgSpecHash": "NSumZQOhGZGaXdFxKFeHU/1MlYgF4B0ib+8fQyR7nJ3wigD/rIEWUyOfzvmISmAmu3hdq2BRtrbotGDKmulnFw==",
   "success": true,
   "projectFilePath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.Android\\PokeApp.Android.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\rodri\\.nuget\\packages\\prism.core\\7.2.0.1367\\prism.core.7.2.0.1367.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\prism.dryioc.forms\\7.2.0.1367\\prism.dryioc.forms.7.2.0.1367.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\prism.forms\\7.2.0.1367\\prism.forms.7.2.0.1367.nupkg.sha512",
+    "C:\\Users\\rodri\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\system.reactive\\4.0.0\\system.reactive.4.0.0.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
@@ -60,6 +61,7 @@
     "C:\\Users\\rodri\\.nuget\\packages\\xamarin.android.support.versionedparcelable\\28.0.0.1\\xamarin.android.support.versionedparcelable.28.0.0.1.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\xamarin.android.support.viewpager\\28.0.0.1\\xamarin.android.support.viewpager.28.0.0.1.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\xamarin.build.download\\0.4.11\\xamarin.build.download.0.4.11.nupkg.sha512",
+    "C:\\Users\\rodri\\.nuget\\packages\\xamarin.essentials\\1.3.0\\xamarin.essentials.1.3.0.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\xamarin.ffimageloading\\2.4.11.982\\xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\xamarin.ffimageloading.forms\\2.4.11.982\\xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\xamarin.firebase.auth\\71.1605.0\\xamarin.firebase.auth.71.1605.0.nupkg.sha512",
