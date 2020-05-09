@@ -33,6 +33,7 @@ Se ha implementado los siguientes puntos:
 • Para cada equipo se muestra la información básica.
 
 • Un usuario puede permitir que otro usuario copie su equipo mediante un Token.
+
   *NOTA: No se hizo el token con longitud corta debido que puede haber una probabilidad que el token pueda repetirse por tener una               cantidad reducida de caracteres. Claro, solo sería en casos de una cantidad grande de datos almacenados.*
   
   
