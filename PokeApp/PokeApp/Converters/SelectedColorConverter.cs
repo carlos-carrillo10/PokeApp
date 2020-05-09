@@ -13,7 +13,7 @@ namespace PokeApp.Converters
 
             var val = (bool)value;
             if (val)
-                return "#29358d"; //selected
+                return "#FFD662"; //selected
             else
                 return "#FFFFFF";
 

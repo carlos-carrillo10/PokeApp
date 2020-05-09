@@ -1,4 +1,5 @@
-﻿using Plugin.Connectivity;
+﻿using Acr.UserDialogs;
+using Plugin.Connectivity;
 using PokeApp.Services.Interfaces;
 using Prism.Navigation;
 using System;
@@ -34,8 +35,10 @@ namespace PokeApp.ViewModels
 
             Login = new Command(async () =>
             {
+                UserDialogs.Instance.ShowLoading(null, MaskType.Clear);
                 if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
                 {
+                    UserDialogs.Instance.HideLoading();
                     await App.Current.MainPage.DisplayAlert("Error",
                                                       "Email y Password son requeridos", "ok");
                     return;
@@ -43,6 +46,7 @@ namespace PokeApp.ViewModels
 
                 if (!CrossConnectivity.Current.IsConnected)
                 {
+                    UserDialogs.Instance.HideLoading();
                     NoInternetAlert();
                     return;
                 }
@@ -90,7 +94,6 @@ namespace PokeApp.ViewModels
         {
             try
             {
-
                 //save to secure storage
                 var service = DependencyService.Get<IFirebaseAuth>();
                 var result = await service.LoginWithEmailPassword(Email, Password);
@@ -99,10 +102,14 @@ namespace PokeApp.ViewModels
                 {
                     await SecureStorage.SetAsync("Token", result["Token"]);
                     await SecureStorage.SetAsync("UserId", result["UserId"]);
+                    UserDialogs.Instance.HideLoading();
+
                     return true;
                 }
                 else 
                 {
+                    UserDialogs.Instance.HideLoading();
+
                     await App.Current.MainPage.DisplayAlert("Error",
                                                      "Email or Password is wrong", "ok");
                     return false;
@@ -110,6 +117,7 @@ namespace PokeApp.ViewModels
             }
             catch (Exception ex)
             {
+                UserDialogs.Instance.HideLoading();
                 ErrorAlert();
                 return false;
             }

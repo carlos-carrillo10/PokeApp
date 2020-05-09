@@ -1,4 +1,5 @@
-﻿using PokeApp.FirebaseRepository.Interfaces;
+﻿using Acr.UserDialogs;
+using PokeApp.FirebaseRepository.Interfaces;
 using PokeApp.FireBaseRepository.Interfaces;
 using PokeApp.Models.FirebaseDatabase;
 using PokeApp.Models.Regions;
@@ -41,11 +42,15 @@ namespace PokeApp.ViewModels
                 var action = await App.Current.MainPage.DisplayAlert("Warning", "Do you want to delete this group?", "Yes", "No");
                 if (action)
                 {
+                    UserDialogs.Instance.ShowLoading(null, MaskType.Clear);
+
                     //delete pokemons that belong to this group
                     await _grupoPokemonsRepository.DeteleDataByGrupoId(GroupId);
 
                     //then, delete group
                     await _gruposRegionRepository.DeleteData(GroupId, await SecureStorage.GetAsync("UserId"), string.Empty);
+
+                    UserDialogs.Instance.HideLoading();
 
                     await App.Current.MainPage.DisplayAlert("Success",
                                                   "Your group was deleted successfully", "ok");
@@ -59,6 +64,7 @@ namespace PokeApp.ViewModels
                 var navigationParams = new NavigationParameters();
                 navigationParams.Add("GruposRegion", GruposRegion);
                 navigationParams.Add("IsCreate", false);
+                navigationParams.Add("PokemonsAdded", PokemonsAdded);
                 await _navigationService.NavigateAsync("PokemonRegionView", navigationParams);
 
             });
@@ -71,6 +77,8 @@ namespace PokeApp.ViewModels
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
+                UserDialogs.Instance.ShowLoading(null, MaskType.Clear);
+
                 if (parameters != null && parameters.Count != 0)
                 {
                     GroupId = (int)parameters["GrupoId"];
@@ -85,15 +93,19 @@ namespace PokeApp.ViewModels
                         IsEmpty = false;
                         PokemonsCount = poks.Count();
                         PokemonsAdded = new ObservableCollection<GrupoPokemons>(poks);
+                        UserDialogs.Instance.HideLoading();
+
                     }
                     else
                     {
                         IsEmpty = true;
                         PokemonsCount = 0;
+                        UserDialogs.Instance.HideLoading();
+
                     }
                 }
 
-
+                UserDialogs.Instance.HideLoading();
             });
 
         }

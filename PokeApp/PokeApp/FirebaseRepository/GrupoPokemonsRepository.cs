@@ -90,7 +90,7 @@ namespace PokeApp.FirebaseRepository
             }
         }
 
-        public async Task<bool> DeleteData(int id)
+        public async Task<bool> DeleteData(int id, string UserId, string Regio)
         {
             try
             {
@@ -162,5 +162,22 @@ namespace PokeApp.FirebaseRepository
                 return default;
             }
         }
+
+        public async Task<IEnumerable<GrupoPokemons>> GetAllDataById(int id, string UserId, string Region)
+        {
+            try
+            {
+                var value = await GetAllData(UserId, Region);
+                if (value != null)
+                    return value.Where(a => a.Id == id);
+                else
+                    return new List<GrupoPokemons>();
+            }
+            catch (Exception ex)
+            {
+                return new List<GrupoPokemons>();
+            }
+        }
+
     }
 }

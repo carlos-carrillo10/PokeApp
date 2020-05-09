@@ -122,11 +122,6 @@ namespace PokeApp.FireBaseRepository.Repositories
 
         }
 
-        public Task<IEnumerable<GruposRegion>> GetAllDataById(int id, string UserId, string Region)
-        {
-            return default;
-        }
-
         public async Task<IEnumerable<GruposRegion>> GetAllDataByName(string Name, string UserId)
         {
             var values = await GetAllData(UserId, Name);
@@ -151,5 +146,6 @@ namespace PokeApp.FireBaseRepository.Repositories
                 return false;
             }
         }
+
     }
 }

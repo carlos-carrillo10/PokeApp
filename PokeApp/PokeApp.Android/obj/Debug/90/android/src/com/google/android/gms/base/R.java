@@ -8,12 +8,12 @@ package com.google.android.gms.base;
 
 public final class R {
 	public static final class attr {
-		public static final int buttonSize = 0x7f030054;
-		public static final int circleCrop = 0x7f030078;
-		public static final int colorScheme = 0x7f03008f;
-		public static final int imageAspectRatio = 0x7f0300f9;
-		public static final int imageAspectRatioAdjust = 0x7f0300fa;
-		public static final int scopeUris = 0x7f030161;
+		public static final int buttonSize = 0x7f030060;
+		public static final int circleCrop = 0x7f030084;
+		public static final int colorScheme = 0x7f03009b;
+		public static final int imageAspectRatio = 0x7f030105;
+		public static final int imageAspectRatioAdjust = 0x7f030106;
+		public static final int scopeUris = 0x7f03016d;
 	}
 	public static final class color {
 		public static final int common_google_signin_btn_text_dark = 0x7f05002e;
@@ -58,9 +58,9 @@ public final class R {
 		public static final int dark = 0x7f08003c;
 		public static final int icon_only = 0x7f08005b;
 		public static final int light = 0x7f080064;
-		public static final int none = 0x7f0800a5;
-		public static final int standard = 0x7f0800db;
-		public static final int wide = 0x7f080102;
+		public static final int none = 0x7f0800a8;
+		public static final int standard = 0x7f0800de;
+		public static final int wide = 0x7f080106;
 	}
 	public static final class string {
 		public static final int common_google_play_services_enable_button = 0x7f0d002b;
@@ -82,11 +82,11 @@ public final class R {
 		public static final int common_signin_button_text_long = 0x7f0d003c;
 	}
 	public static final class styleable {
-		public static final int[] LoadingImageView = new int[] { 0x7f030078, 0x7f0300f9, 0x7f0300fa };
+		public static final int[] LoadingImageView = new int[] { 0x7f030084, 0x7f030105, 0x7f030106 };
 		public static final int LoadingImageView_circleCrop = 0;
 		public static final int LoadingImageView_imageAspectRatio = 1;
 		public static final int LoadingImageView_imageAspectRatioAdjust = 2;
-		public static final int[] SignInButton = new int[] { 0x7f030054, 0x7f03008f, 0x7f030161 };
+		public static final int[] SignInButton = new int[] { 0x7f030060, 0x7f03009b, 0x7f03016d };
 		public static final int SignInButton_buttonSize = 0;
 		public static final int SignInButton_colorScheme = 1;
 		public static final int SignInButton_scopeUris = 2;

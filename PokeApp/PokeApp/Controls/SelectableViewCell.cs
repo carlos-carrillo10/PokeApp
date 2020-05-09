@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using PokeApp.Converters;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 
@@ -14,7 +17,9 @@ namespace PokeApp.Controls
 
         private void CustomViewCell_Tapped(object sender, EventArgs e)
         {
-          //SelectorColor ="#000000";
+            var newValue = (((ViewCell)sender).View.BackgroundColor.ToHex()).Contains("#FFFFFF") ? true : false;
+            ((ViewCell)sender).View.BackgroundColor = Color.FromHex(new SelectedColorConverter().Convert(newValue, default, null, default).ToString());
+           
         }
 
         #region Bindable Properties
@@ -27,13 +32,33 @@ namespace PokeApp.Controls
 
         public static readonly BindableProperty SelectorColorProperty =
         BindableProperty.Create("SelectorColor", typeof(string), typeof(string), propertyChanged: SelectorColorChanged);
+
+        public bool Selected
+        {
+            get { return (bool)GetValue(SelectedProperty); }
+            set
+            {
+                SetValue(SelectorColorProperty, value);
+                OnPropertyChanged(nameof(Selected));
+            }
+        }
+
+        public static readonly BindableProperty SelectedProperty =
+        BindableProperty.Create("SelectedColor", typeof(bool), typeof(bool), default, BindingMode.TwoWay, propertyChanged: SelectedChanged);
+
         #endregion
 
         #region Methods
 
         private static void SelectorColorChanged(BindableObject bindable, object oldValue, object newValue)
         {
-          //  ((ViewCell)bindable).View.BackgroundColor = Color.FromHex((string)newValue);
+          
+        }
+
+        private static void SelectedChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (newValue != null)
+                ((ViewCell)bindable).View.BackgroundColor = Color.FromHex(new SelectedColorConverter().Convert(newValue, default, null, default).ToString());
         }
         #endregion
 

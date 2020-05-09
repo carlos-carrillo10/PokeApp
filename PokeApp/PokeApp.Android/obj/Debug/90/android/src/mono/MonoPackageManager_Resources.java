@@ -3,6 +3,8 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "PokeApp.Android.dll" comes first in this list. */
 		"PokeApp.Android.dll",
+		"Acr.UserDialogs.dll",
+		"AndHUD.dll",
 		"DryIoc.dll",
 		"FFImageLoading.dll",
 		"FFImageLoading.Forms.dll",

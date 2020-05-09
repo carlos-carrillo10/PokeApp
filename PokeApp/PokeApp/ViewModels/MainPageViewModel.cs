@@ -1,4 +1,5 @@
-﻿using Plugin.Connectivity;
+﻿using Acr.UserDialogs;
+using Plugin.Connectivity;
 using PokeApp.FireBaseRepository.Interfaces;
 using PokeApp.Models;
 using PokeApp.Models.FirebaseDatabase;
@@ -38,6 +39,11 @@ namespace PokeApp.ViewModels
             GetRegions();
         }
 
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            GetRegions();
+        }
+
         #region Bindable Properties
 
         private ObservableCollection<Models.Regions.Region> _regionsList;
@@ -48,7 +54,7 @@ namespace PokeApp.ViewModels
             set
             {
                 _regionsList = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(RegionsList));
             }
         }
 
@@ -63,7 +69,7 @@ namespace PokeApp.ViewModels
                     GoToView(value);
                     RegionSelected = null;
                 }
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(RegionSelected));
             }
         }
 
@@ -76,8 +82,14 @@ namespace PokeApp.ViewModels
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
+                UserDialogs.Instance.ShowLoading(null, MaskType.Clear);
+
                 if (CrossConnectivity.Current.IsConnected)
                 {
+
+                    if (RegionsList != null && RegionsList.Count > 0)
+                        RegionsList.Clear();
+
                     var values = await _apiService.GetAsync<RegionRequest>(Constants.Regions);
                     if (values != null)
                     {
@@ -86,9 +98,14 @@ namespace PokeApp.ViewModels
                     }
                     else
                         IsEmpty = true;
+
+                    UserDialogs.Instance.HideLoading();
+
                 }
                 else
                 {
+                    UserDialogs.Instance.HideLoading();
+
                     ErrorAlert();
                     IsEmpty = true;
                 }    

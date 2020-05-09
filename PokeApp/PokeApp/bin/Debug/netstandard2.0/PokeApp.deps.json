@@ -9,6 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "PokeApp/1.0.0": {
         "dependencies": {
+          "Acr.UserDialogs": "7.0.4",
           "FirebaseDatabase.net": "4.0.4",
           "Microsoft.AppCenter.Analytics": "3.2.1",
           "Microsoft.AppCenter.Crashes": "3.2.1",
@@ -22,6 +23,14 @@
         },
         "runtime": {
           "PokeApp.dll": {}
+        }
+      },
+      "Acr.UserDialogs/7.0.4": {
+        "runtime": {
+          "lib/netstandard2.0/Acr.UserDialogs.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "DryIoc.dll/4.0.4": {
@@ -324,6 +333,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Acr.UserDialogs/7.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-J+3+rSVtAAUqvaXC0NGZ6HAcSXMaMyqvKsV1sMoraT7g+Zv/r4QmgUUITPu875n0uO57Y87Xn6IbLVDPje6tlw==",
+      "path": "acr.userdialogs/7.0.4",
+      "hashPath": "acr.userdialogs.7.0.4.nupkg.sha512"
     },
     "DryIoc.dll/4.0.4": {
       "type": "package",

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "NSumZQOhGZGaXdFxKFeHU/1MlYgF4B0ib+8fQyR7nJ3wigD/rIEWUyOfzvmISmAmu3hdq2BRtrbotGDKmulnFw==",
+  "dgSpecHash": "+xDb7KFfdPv70IS9PdZpOgztXA6qVPCtdaWDU3u71+AqTeRmB0WjTg5rNSv+wJigDWZDjilsb2Kt2Ms0NTTfXQ==",
   "success": true,
   "projectFilePath": "D:\\GitHub Repositories\\PokeApp\\PokeApp\\PokeApp.Android\\PokeApp.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\rodri\\.nuget\\packages\\acr.userdialogs\\7.0.4\\acr.userdialogs.7.0.4.nupkg.sha512",
+    "C:\\Users\\rodri\\.nuget\\packages\\andhud\\1.4.1\\andhud.1.4.1.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\dryioc.dll\\4.0.4\\dryioc.dll.4.0.4.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\firebasedatabase.net\\4.0.4\\firebasedatabase.net.4.0.4.nupkg.sha512",
     "C:\\Users\\rodri\\.nuget\\packages\\litedb\\4.1.4\\litedb.4.1.4.nupkg.sha512",

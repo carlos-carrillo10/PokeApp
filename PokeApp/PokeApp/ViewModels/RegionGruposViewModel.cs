@@ -1,4 +1,5 @@
-﻿using Plugin.Connectivity;
+﻿using Acr.UserDialogs;
+using Plugin.Connectivity;
 using PokeApp.FirebaseRepository.Interfaces;
 using PokeApp.FireBaseRepository.Interfaces;
 using PokeApp.Models.FirebaseDatabase;
@@ -50,6 +51,8 @@ namespace PokeApp.ViewModels
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
+                UserDialogs.Instance.ShowLoading(null, MaskType.Clear);
+
                 if (parameters != null && parameters.Count != 0)
                 {
                     Title = (string)parameters["RegionName"];
@@ -60,12 +63,16 @@ namespace PokeApp.ViewModels
                     {
                         IsEmpty = false;
                         GruposRegionList = new ObservableCollection<GruposRegion>(GroupsCreated);
+                        UserDialogs.Instance.HideLoading();
+
                     }
                     else
                         IsEmpty = true;
-                }
-                   
+                    UserDialogs.Instance.HideLoading();
 
+                }
+
+                UserDialogs.Instance.HideLoading();
 
             });
 

@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using Acr.UserDialogs;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Firebase;
@@ -24,6 +25,8 @@ namespace PokeApp.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+
+            UserDialogs.Init(this);
 
             AppCenter.Start("5e140adf-f042-4958-b98b-d832a82a4d21",
                    typeof(Analytics), typeof(Crashes));

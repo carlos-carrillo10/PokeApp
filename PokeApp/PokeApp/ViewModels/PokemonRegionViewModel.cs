@@ -1,4 +1,5 @@
-﻿using Plugin.Connectivity;
+﻿using Acr.UserDialogs;
+using Plugin.Connectivity;
 using PokeApp.FirebaseRepository.Interfaces;
 using PokeApp.FireBaseRepository.Interfaces;
 using PokeApp.Models.FirebaseDatabase;
@@ -16,6 +17,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace PokeApp.ViewModels
 {
@@ -27,7 +29,6 @@ namespace PokeApp.ViewModels
         private INavigationService _navigationService;
         private IGruposRegionRepository _gruposRegionRepository;
         private IGrupoPokemonsRepository _grupoPokemonsRepository;
-        private static List<PokemonSpecies> PokemonsSelected;
         private static bool IsCreate { get; set; }
 
         #endregion
@@ -42,8 +43,6 @@ namespace PokeApp.ViewModels
             _gruposRegionRepository = gruposRegionRepository;
             _grupoPokemonsRepository = grupoPokemonsRepository;
 
-            PokemonsSelected = new List<PokemonSpecies>();
-
             #region Commands Logic
 
             CancelCreation = new Command(async () =>
@@ -55,10 +54,16 @@ namespace PokeApp.ViewModels
             {
                 try
                 {
-                    if (PokemonsSelected.Count < 3)
+                    UserDialogs.Instance.ShowLoading(null, MaskType.None);
+
+
+                    //validate pokemons number
+                    if (PokemonsCounter < 3 || PokemonsCounter > 6)
                     {
+                        UserDialogs.Instance.HideLoading();
+
                         await App.Current.MainPage.DisplayAlert("Error",
-                                                            "You must add at least 3 pokemons", "ok");
+                                                            "You must add at min. 3 pokemons or max. 6 pokemons", "ok");
                         return;
                     }
 
@@ -85,17 +90,17 @@ namespace PokeApp.ViewModels
                             if (result1)
                             {
                                 //then we add pokemons related
-                                var data = PokemonsSelected.Select(x =>
-                                            new GrupoPokemons
-                                            {
-                                                GroupId = group.GrupoId,
-                                                Pokemon = x.name
-                                            });
+                                var data = PokemonList.Where(x => x.IsSelected).Select(x =>
+                                             new GrupoPokemons
+                                             {
+                                                 GroupId = group.GrupoId,
+                                                 Pokemon = x.name
+                                             });
 
                                 result2 = await _grupoPokemonsRepository.SaveDataRange(data);
                             }
 
-                            if (result1 && result1)
+                            if (result1 && result2)
                             {
                                 await App.Current.MainPage.DisplayAlert("Success",
                                                              "Your group was created successfully", "ok");
@@ -104,6 +109,8 @@ namespace PokeApp.ViewModels
                             }
                             else
                             {
+                                UserDialogs.Instance.HideLoading();
+
                                 ErrorAlert();
                                 await navigationService.GoBackAsync();
                             }
@@ -119,19 +126,43 @@ namespace PokeApp.ViewModels
 
                             if (result1)
                             {
-                                ////then we add pokemons related
-                                //var data = PokemonsSelected.Select(x =>
-                                //            new GrupoPokemons
-                                //            {
-                                //                GroupId = GruposRegion.GrupoId,
-                                //                Pokemon = x.name
-                                //            });
+                                //then we add pokemons related and delete pokemons non related
 
-                                //result2 = await _grupoPokemonsRepository.SaveDataRange(data);
+                                var oldValues = (await _grupoPokemonsRepository.GetDataByGrupoId(GruposRegion.GrupoId)).ToList();
+
+                                var data = PokemonList.Where(x => x.IsSelected).Select(x =>
+                                             new GrupoPokemons
+                                             {
+                                                 GroupId = GruposRegion.GrupoId,
+                                                 Pokemon = x.name
+                                             });
+
+                                //if old data does not appear, it means it was no unselected
+                                foreach (var item in oldValues)
+                                {
+                                    if (!data.Select(x => x.Pokemon).Contains(item.Pokemon))
+                                        await _grupoPokemonsRepository.DeleteData(item.Id, string.Empty, string.Empty);
+
+                                }
+
+                                //if new data does not appear, it means it must be added
+
+                                foreach (var item in data)
+                                {
+                                    if (!oldValues.Select(x => x.Pokemon).Contains(item.Pokemon))
+                                    {
+                                        item.Id = await _gruposRegionRepository.GetLastID(await SecureStorage.GetAsync("UserId"), string.Empty) + 1;
+                                        await _grupoPokemonsRepository.SaveData(item);
+                                    }
+                                }
+
+                                result2 = true;
                             }
 
-                            if (result1 && result1)
+                            if (result1 && result2)
                             {
+                                UserDialogs.Instance.HideLoading();
+
                                 await App.Current.MainPage.DisplayAlert("Success",
                                                              "Your group was modified successfully", "ok");
                                 await navigationService.GoBackAsync();
@@ -139,6 +170,8 @@ namespace PokeApp.ViewModels
                             }
                             else
                             {
+                                UserDialogs.Instance.HideLoading();
+
                                 ErrorAlert();
                                 await navigationService.GoBackAsync();
                             }
@@ -168,24 +201,10 @@ namespace PokeApp.ViewModels
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
+                UserDialogs.Instance.ShowLoading(null, MaskType.Clear);
+
                 if (parameters != null && parameters.Count > 0)
                 {
-                    IsCreate = (bool)parameters["IsCreate"];
-
-                    if (IsCreate)
-                    {
-                        Title = "Create your group";
-                    }
-                    else
-                    {
-                        Title = "Modify";
-                        GruposRegion = (GruposRegion)parameters["GruposRegion"];
-                        GroupName = GruposRegion.GrupoName;
-                        GroupType = GruposRegion.GrupoTipo;
-                        PokedexDescription = GruposRegion.PokedexDescription;
-                        Region = GruposRegion.Region;
-                    }
-
                     if (PokedexInfo == null)
                         PokedexInfo = new List<Pokedex>((IList<Pokedex>)parameters["pokedexes"]);
 
@@ -193,9 +212,10 @@ namespace PokeApp.ViewModels
                     {
                         if (PokedexInfo.Count() > 0)
                         {
+                            //Get all pokemons from region selected
+
                             var pokemons = new List<PokemonSpecies>();
 
-                            //add all pokemons of region selected
                             foreach (var item in PokedexInfo)
                             {
                                 IsEmpty = false;
@@ -207,17 +227,65 @@ namespace PokeApp.ViewModels
                                     pokemons.AddRange(values.pokemon_entries.Select(x => x.pokemon_species));
                                 }
                             }
-                            PokemonList = new ObservableCollection<PokemonSpecies>(pokemons.OrderBy(x => x.name));
+
+                            IsCreate = (bool)parameters["IsCreate"];
+
+                            if (IsCreate)
+                            {
+                                Title = "Create your group";
+                            }
+                            else
+                            {
+                                Title = "Modify";
+                                GruposRegion = (GruposRegion)parameters["GruposRegion"];
+                                GroupName = GruposRegion.GrupoName;
+                                GroupType = GruposRegion.GrupoTipo;
+                                PokedexDescription = GruposRegion.PokedexDescription;
+                                Region = GruposRegion.Region;
+
+                                var pokemonsAdded = (ObservableCollection<GrupoPokemons>)parameters["PokemonsAdded"];
+
+                                //set selected pokemons added
+
+                                foreach (var item in pokemonsAdded)
+                                {
+                                    var value = pokemons.Where(x => x.name.Contains(item.Pokemon)).FirstOrDefault();
+                                    if (value != null)
+                                        value.IsSelected = true;
+
+                                }
+
+                                PokemonsCounter = pokemonsAdded.Count();
+                            }
+
+
+                            PokemonList = new ObservableCollection<PokemonSpecies>();
+
+                            //avoid repeated data
+                            foreach (var item in pokemons.OrderBy(x => x.name))
+                            {
+                                if (!PokemonList.Any(x => x.name.Contains(item.name)))
+                                    PokemonList.Add(item);
+                            }
+
+                            UserDialogs.Instance.HideLoading();
+
                         }
                         else
                             IsEmpty = true;
+                        UserDialogs.Instance.HideLoading();
+
                     }
                     else
                     {
+                        UserDialogs.Instance.HideLoading();
+
                         ErrorAlert();
                         IsEmpty = true;
                     }
+
                 }
+                UserDialogs.Instance.HideLoading();
 
 
             });
@@ -233,8 +301,8 @@ namespace PokeApp.ViewModels
             get { return _pokemonList; }
             set
             {
-                _pokemonList = value;
-                OnPropertyChanged();
+                SetProperty(ref _pokemonList, value);
+
             }
         }
 
@@ -245,23 +313,12 @@ namespace PokeApp.ViewModels
             get { return _pokemonSelected; }
             set
             {
-                _pokemonSelected = value;
-
+                SetProperty(ref _pokemonSelected, value);
                 if (_pokemonSelected != null)
                 {
-                    _pokemonSelected.IsSelected = !_pokemonSelected.IsSelected;
-                    if (_pokemonSelected.IsSelected)
-                    {
-                        if (PokemonsSelected.Count <= 5)
-                            PokemonsSelected.Add(_pokemonSelected);
-                    }
-                    else
-                        PokemonsSelected.Remove(_pokemonSelected);
-
-                    PokemonsCounter = PokemonsSelected.Count;
+                    PokemonList.ForEach(x => x.IsSelected = x.name == value.name ? !_pokemonSelected.IsSelected : x.IsSelected);
+                    PokemonsCounter = PokemonList.Where(x => x.IsSelected).Count();
                 }
-
-                OnPropertyChanged();
             }
         }
 
