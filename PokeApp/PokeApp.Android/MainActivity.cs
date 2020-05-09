@@ -11,7 +11,7 @@ using Prism.Ioc;
 
 namespace PokeApp.Droid
 {
-    [Activity(Label = "PokeApp", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "PokeApp", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public static FirebaseApp app;
@@ -47,7 +47,7 @@ namespace PokeApp.Droid
         public override void OnBackPressed()
         {
             // This prevents a user go to the login page when its logged.
-            if (App.IsLogged) return;
+            if (App.IsMainView) return;
                 
             base.OnBackPressed();
         }

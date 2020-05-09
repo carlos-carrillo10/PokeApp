@@ -78,7 +78,7 @@ namespace PokeApp.FireBaseRepository.Repositories
             return default;
         }
 
-        public async Task<int> GetLastID(string UserId, string Region)
+        public async Task<int> GetLastID()
         {
             return default;
         }
@@ -102,6 +102,5 @@ namespace PokeApp.FireBaseRepository.Repositories
         {
             throw new NotImplementedException();
         }
-
     }
 }

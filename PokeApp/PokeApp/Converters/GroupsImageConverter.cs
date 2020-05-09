@@ -11,11 +11,11 @@ namespace PokeApp.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
-                return "pokeballLogo.png";
+                return "pokeball_transparent";
 
             var val = (string)value;
             if (string.IsNullOrEmpty(val))
-                return "pokeballLogo.png";
+                return "pokeball_transparent";
             else
                 return val;
         }

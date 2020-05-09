@@ -5,9 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
+             xmlns:controls="clr-namespace:PokeApp.Controls"
              x:Class="PokeApp.Views.LoginView">
     <ContentPage.Content>
-        
+
         <Grid VerticalOptions="FillAndExpand"
               HorizontalOptions="FillAndExpand">
             <Grid.ColumnDefinitions>
@@ -35,6 +36,8 @@
                    VerticalOptions="FillAndExpand"
                    CornerRadius="5"
                    BackgroundColor="White"
+                   BorderColor="#ededed"
+                   HasShadow="False"
                    Margin="30,0,30,0">
                 <Grid VerticalOptions="FillAndExpand"
                       HorizontalOptions="FillAndExpand">
@@ -57,14 +60,14 @@
                            FontAttributes="Bold"
                            FontSize="Large"
                            Style="{StaticResource labelFontStyle}"/>
-                    <Entry Grid.Row="1"
+                    <controls:CustomEntry Grid.Row="1"
                            Grid.Column="1"
                            VerticalOptions="FillAndExpand"
                            HorizontalOptions="FillAndExpand"
                            Placeholder="Email"
                            Text="{Binding Email}"
                            Style="{StaticResource entryFontStyle}"/>
-                    <Entry Grid.Row="2"
+                    <controls:CustomEntry Grid.Row="2"
                            Grid.Column="1"
                            VerticalOptions="FillAndExpand"
                            HorizontalOptions="FillAndExpand"

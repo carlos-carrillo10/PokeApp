@@ -44,7 +44,7 @@
                            FontAttributes="Bold"
                            FontSize="Medium"
                            Style="{StaticResource labelFontStyle}"/>
-                <Entry Grid.Column="1"
+                <controls:CustomEntry Grid.Column="1"
                            Grid.Row="0"
                            Text="{Binding GroupName}"
                            VerticalOptions="CenterAndExpand"
@@ -59,7 +59,7 @@
                            FontAttributes="Bold"
                            FontSize="Medium"
                            Style="{StaticResource labelFontStyle}"/>
-                <Entry Grid.Column="1"
+                <controls:CustomEntry Grid.Column="1"
                            Grid.Row="1"
                            Text="{Binding GroupType}"
                            VerticalOptions="CenterAndExpand"
@@ -74,7 +74,7 @@
                            FontAttributes="Bold"
                            FontSize="Medium"
                            Style="{StaticResource labelFontStyle}"/>
-                <Entry Grid.Column="1"
+                <controls:CustomEntry Grid.Column="1"
                            Grid.Row="2"
                            Text="{Binding PokedexDescription}"
                            VerticalOptions="CenterAndExpand"
@@ -113,7 +113,9 @@
                                    HorizontalOptions="FillAndExpand"
                                    Margin="10"
                                    CornerRadius="5"
-                                   BackgroundColor="#FFFFFF">
+                                   BackgroundColor="#FFFFFF"
+                                   BorderColor="#ededed"
+                                   HasShadow="False">
                                 <Grid VerticalOptions="Fill"
                                   HorizontalOptions="FillAndExpand">
                                     <Grid.ColumnDefinitions>

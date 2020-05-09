@@ -3,6 +3,7 @@ D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\bin\Debug\netstandard2.0\PokeApp.
 D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\bin\Debug\netstandard2.0\PokeApp.pdb
 D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\PokeApp.csprojAssemblyReference.cache
 D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\Views\AddGroupCopiedView.xaml.g.cs
 D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\Views\GrupoDetailsView.xaml.g.cs
 D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\Views\LoginView.xaml.g.cs
 D:\GitHub Repositories\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs

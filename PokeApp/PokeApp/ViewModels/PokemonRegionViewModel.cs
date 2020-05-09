@@ -76,14 +76,15 @@ namespace PokeApp.ViewModels
                             //Create Group group first
                             var group = new GruposRegion
                             {
-                                GrupoId = await _gruposRegionRepository.GetLastID(await SecureStorage.GetAsync("UserId"), string.Empty) + 1,
+                                GrupoId = await _gruposRegionRepository.GetLastID() + 1,
                                 GrupoName = GroupName,
                                 GrupoTipo = GroupType,
                                 PokedexDescription = PokedexDescription,
                                 Image = "",
                                 Region = PokedexInfo.FirstOrDefault().name,
                                 UserId = await SecureStorage.GetAsync("UserId"),
-                                Token = Convert.ToBase64String(Guid.NewGuid().ToByteArray())
+                                Token = Convert.ToBase64String(Guid.NewGuid().ToByteArray()),
+                                GrupoIdFather = null
                         };
 
                             result1 = await _gruposRegionRepository.SaveData(group);
@@ -155,7 +156,7 @@ namespace PokeApp.ViewModels
                                 {
                                     if (!oldValues.Select(x => x.Pokemon).Contains(item.Pokemon))
                                     {
-                                        item.Id = await _gruposRegionRepository.GetLastID(await SecureStorage.GetAsync("UserId"), string.Empty) + 1;
+                                        item.Id = await _gruposRegionRepository.GetLastID() + 1;
                                         await _grupoPokemonsRepository.SaveData(item);
                                     }
                                 }

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:controls="clr-namespace:PokeApp.Controls"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="PokeApp.Views.AddGroupCopiedView">
+    <ContentPage.Content>
+        <Grid Margin="10,20,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"
+                   Text="Paste Group's token to add it"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="StartAndExpand"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   Style="{StaticResource labelFontStyle}"/>
+            <controls:CustomEntry Grid.Row="1"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   Placeholder="Token"
+                   Text="{Binding Token}"
+                   Style="{StaticResource entryFontStyle}"/>
+             <Button Grid.Row="2" 
+                     VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     Text="Add"
+                     BackgroundColor="#CC0000"
+                     TextColor="White"
+                     Command="{Binding SendToken}"/>
+
+            <ff:CachedImage Source="pikachu"
+                            Grid.Row="3"
+                            WidthRequest="250"
+                            HeightRequest="250"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="EndAndExpand">
+            </ff:CachedImage>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

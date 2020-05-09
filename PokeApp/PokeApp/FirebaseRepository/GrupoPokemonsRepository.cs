@@ -36,7 +36,7 @@ namespace PokeApp.FirebaseRepository
             {
                 foreach (var item in values)
                 {
-                    item.Id = await GetLastID(string.Empty, string.Empty) + 1;
+                    item.Id = await GetLastID() + 1;
                     var val = JsonConvert.SerializeObject(item);
                     await GetInstance().Child(typeof(GrupoPokemons).Name).PostAsync(val);
                 }
@@ -107,11 +107,11 @@ namespace PokeApp.FirebaseRepository
             }
         }
 
-        public async Task<int> GetLastID(string UserId, string Region)
+        public async Task<int> GetLastID()
         {
             try
             {
-                var value = await GetAllData(UserId, Region);
+                var value = (await GetInstance().Child(typeof(GrupoPokemons).Name).OnceAsync<GrupoPokemons>()).Select(x =>x.Object);
                 if (value != null)
                     return value.OrderBy(x => x.Id).LastOrDefault().Id;
                 else

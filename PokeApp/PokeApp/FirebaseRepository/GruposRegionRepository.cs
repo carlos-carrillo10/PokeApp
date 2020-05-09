@@ -1,6 +1,7 @@
 ﻿using Firebase.Database.Query;
 using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
+using PokeApp.FirebaseRepository.Interfaces;
 using PokeApp.FireBaseRepository.Interfaces;
 using PokeApp.Models.FirebaseDatabase;
 using System;
@@ -13,6 +14,12 @@ namespace PokeApp.FireBaseRepository.Repositories
 {
     public class GruposRegionRepository : BaseRepository<GruposRegion>, IGruposRegionRepository
     {
+        private IGrupoPokemonsRepository _grupoPokemonsRepository;
+
+        public GruposRegionRepository(IGrupoPokemonsRepository grupoPokemonsRepository)
+        {
+            _grupoPokemonsRepository = grupoPokemonsRepository;
+        }
         public async Task<IEnumerable<GruposRegion>> GetAllData(string UserId, string Region)
         {
             try
@@ -103,11 +110,12 @@ namespace PokeApp.FireBaseRepository.Repositories
             }
         }
 
-        public async Task<int> GetLastID(string UserId, string Region)
+        public async Task<int> GetLastID()
         {
             try
             {
-                return (await GetAllData(UserId, Region)).OrderBy(x => x.GrupoId).LastOrDefault().GrupoId;
+                return (await GetInstance().Child(typeof(GruposRegion).Name).OnceAsync<GruposRegion>()).Select(x=>x.Object)
+                    .OrderBy(x => x.GrupoId).LastOrDefault().GrupoId;
             }
             catch (Exception ex)
             {
@@ -135,7 +143,7 @@ namespace PokeApp.FireBaseRepository.Repositories
             {
                 foreach (var item in values)
                 {
-                    item.GrupoId = await GetLastID(item.UserId, item.Region) + 1;
+                    item.GrupoId = await GetLastID() + 1;
                     var val = JsonConvert.SerializeObject(item);
                     await GetInstance().Child(typeof(GruposRegion).Name).PostAsync(val);
                 }
@@ -147,5 +155,82 @@ namespace PokeApp.FireBaseRepository.Repositories
             }
         }
 
+        public async Task<bool> SaveGroupByToken(string GroupToken, string UserId, string Region)
+        {
+            try
+            {
+                var value = (await GetInstance().Child(typeof(GruposRegion).Name).OnceAsync<GruposRegion>())
+                        .Where(x => x.Object.Token == GroupToken).Select(x => x.Object).FirstOrDefault();
+
+                //Create Group group first
+                var group = new GruposRegion
+                {
+                    GrupoId = await GetLastID() + 1,
+                    GrupoName = value.GrupoName,
+                    GrupoTipo = value.GrupoTipo,
+                    PokedexDescription = value.PokedexDescription,
+                    Image = value.Image,
+                    Region = value.Region,
+                    UserId = UserId,
+                    Token = Convert.ToBase64String(Guid.NewGuid().ToByteArray()),
+                    GrupoIdFather = value.GrupoId
+                };
+
+                await SaveData(group);
+
+                var pokemons = (await _grupoPokemonsRepository.GetDataByGrupoId(value.GrupoId)).ToList();
+
+                //set new GrupoId from new group
+                pokemons.ForEach(x => x.GroupId = group.GrupoId);
+
+                await _grupoPokemonsRepository.SaveDataRange(pokemons);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+           
+
+        }
+
+        public async Task<bool> IsMyGroup(string GroupToken, string UserId, string Region)
+        {
+            var value = (await GetInstance().Child(typeof(GruposRegion).Name).OnceAsync<GruposRegion>())
+                       .Where(x => x.Object.Token == GroupToken && x.Object.UserId == UserId && x.Object.Region.Contains(Region))
+                       .Select(x => x.Object).FirstOrDefault();
+
+            if (value != null)
+                return true; 
+            else
+                return false;
+        }
+
+        public async Task<bool> ItExist(string GroupToken, string UserId, string Region)
+        {
+            var value = (await GetInstance().Child(typeof(GruposRegion).Name).OnceAsync<GruposRegion>())
+                        .Where(x => x.Object.Token == GroupToken)
+                        .Select(x => x.Object).FirstOrDefault();
+
+
+            if (value != null)
+                return true;
+            else
+                return false;
+        }
+
+        public async Task<bool> IsSameRegion(string GroupToken, string UserId, string Region)
+        {
+            var value = (await GetInstance().Child(typeof(GruposRegion).Name).OnceAsync<GruposRegion>())
+                        .Where(x => x.Object.Token == GroupToken && x.Object.Region.Contains(Region))
+                        .Select(x => x.Object).FirstOrDefault();
+
+
+            if (value != null)
+                return true;
+            else
+                return false;
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace PokeApp
          * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
          */
 
-        public static bool IsLogged { get; set; }
+        public static bool IsMainView { get; set; }
 
         public App() : this(null) { }
 
@@ -52,6 +52,7 @@ namespace PokeApp
             containerRegistry.RegisterForNavigation<PokemonRegionView, PokemonRegionViewModel>();
             containerRegistry.RegisterForNavigation<RegionGruposView, RegionGruposViewModel>();
             containerRegistry.RegisterForNavigation<GrupoDetailsView, GrupoDetailsViewModel>();
+            containerRegistry.RegisterForNavigation<AddGroupCopiedView, AddGroupCopiedViewModel>();
 
             #endregion
 

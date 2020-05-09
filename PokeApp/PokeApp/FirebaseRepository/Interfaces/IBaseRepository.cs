@@ -17,7 +17,7 @@ namespace PokeApp.FireBaseRepository.Interfaces
         Task<bool> UpdateData(T value);
         Task<bool> UpdateDataRange(IEnumerable<T> values);
         Task<bool> DeleteData(int id, string UserId, string Region);
-        Task<int> GetLastID(string UserId, string Region);
+        Task<int> GetLastID();
 
     }
 }

@@ -10,7 +10,8 @@
              x:Name="RGView"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Create" Command="{Binding CreateGroup}"/>
+        <ToolbarItem Text="Create" Command="{Binding CreateGroup}" Order="Primary"/>
+        <ToolbarItem Text="Paste Token Group" Command="{Binding PasteToken}" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         
@@ -35,9 +36,11 @@
                                           Text="Copy" IsDestructive="True" /> 
                             </ViewCell.ContextActions>
                             <Frame VerticalOptions="FillAndExpand"
-                               HorizontalOptions="FillAndExpand"
-                               Margin="10"
-                               CornerRadius="5">
+                                   HorizontalOptions="FillAndExpand"
+                                   Margin="10"
+                                   CornerRadius="5"
+                                   BorderColor="#ededed"
+                                   HasShadow="False">
                                 <Grid VerticalOptions="Fill"
                                   HorizontalOptions="FillAndExpand">
                                     <Grid.ColumnDefinitions>
@@ -54,20 +57,21 @@
                                                     Grid.Column="0"
                                                     Grid.Row="0"
                                                     Grid.RowSpan="2"
-                                                    Aspect="Fill"
+                                                    WidthRequest="50"
+                                                    HeightRequest="50"
  />
                                     <Label Text="{Binding GrupoName}"
                                            Grid.Column="1"
                                            Grid.Row="0"
-                                           VerticalOptions="Start"
-                                           HorizontalOptions="Start"
-                                           FontSize="Medium"
+                                           VerticalOptions="CenterAndExpand"
+                                           HorizontalOptions="StartAndExpand"
+                                           FontSize="Large"
                                            Style="{StaticResource labelFontStyle}"/>
                                     <Label Text="Tap for more information >"
                                            Grid.Column="1"
                                            Grid.Row="1"
-                                           VerticalOptions="EndAndExpand"
-                                           HorizontalOptions="EndAndExpand"
+                                           VerticalOptions="End"
+                                           HorizontalOptions="End"
                                            FontSize="Micro"
                                            Style="{StaticResource labelFontStyle}"
                                        />

@@ -44,6 +44,13 @@ namespace PokeApp.ViewModels
                 await _navigationService.NavigateAsync("PokemonRegionView", navigationParams);
             });
 
+            PasteToken = new Command(async (obj) =>
+            {
+                var navigationParams = new NavigationParameters();
+                navigationParams.Add("regionName", Title);
+                await _navigationService.NavigateAsync("AddGroupCopiedView", navigationParams);
+            });
+
             CopyGroup = new Command(async (obj) =>
             {
                 if (obj != null)
@@ -66,6 +73,8 @@ namespace PokeApp.ViewModels
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
+                App.IsMainView = false;
+
                 UserDialogs.Instance.ShowLoading(null, MaskType.Clear);
 
                 //when comes from deleting a group
@@ -151,9 +160,9 @@ namespace PokeApp.ViewModels
 
         #region Commands
 
-
         public ICommand CreateGroup { get; private set; }
         public ICommand CopyGroup { get; private set; }
+        public ICommand PasteToken { get; private set; }
 
         #endregion
     }

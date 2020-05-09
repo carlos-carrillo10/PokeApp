@@ -44,13 +44,14 @@ namespace PokeApp.ViewModels
             Logout = new Command(async () =>
             {
                 SecureStorage.RemoveAll();
-                App.IsLogged = false;
+                App.IsMainView = false;
                 await NavigationService.NavigateAsync("/LoginView");
             });
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
+            App.IsMainView = true;
             GetRegions();
         }
 

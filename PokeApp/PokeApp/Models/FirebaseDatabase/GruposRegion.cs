@@ -14,5 +14,7 @@ namespace PokeApp.Models.FirebaseDatabase
         public string Region { get; set; }
         public string UserId { get; set; }
         public string Token { get; set; }
+        public int? GrupoIdFather { get; set; }
+
     }
 }

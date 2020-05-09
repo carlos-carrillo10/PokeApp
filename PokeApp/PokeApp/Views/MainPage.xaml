@@ -27,7 +27,9 @@
                         <Frame VerticalOptions="FillAndExpand"
                                HorizontalOptions="FillAndExpand"
                                Margin="10"
-                               CornerRadius="5">
+                               CornerRadius="5"
+                               BorderColor="#ededed"
+                               HasShadow="False">
                             <Grid VerticalOptions="Fill"
                                   HorizontalOptions="FillAndExpand">
                                 <Grid.ColumnDefinitions>
