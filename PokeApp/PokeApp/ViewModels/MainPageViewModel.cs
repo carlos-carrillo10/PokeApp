@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace PokeApp.ViewModels
@@ -37,6 +39,14 @@ namespace PokeApp.ViewModels
             _navigationService = navigationService;
             _gruposRegionRepository = gruposRegionRepository;
             GetRegions();
+
+
+            Logout = new Command(async () =>
+            {
+                SecureStorage.RemoveAll();
+                App.IsLogged = false;
+                await NavigationService.NavigateAsync("/LoginView");
+            });
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
@@ -135,6 +145,13 @@ namespace PokeApp.ViewModels
             });
            
         }
+
+        #endregion
+
+        #region Commands
+
+        public ICommand Logout { get; private set; }
+
         #endregion
     }
 }

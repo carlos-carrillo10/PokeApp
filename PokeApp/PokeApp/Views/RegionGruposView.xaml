@@ -29,13 +29,11 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <!--<ViewCell.ContextActions>
-                                <MenuItem CommandParameter="{Binding Path=BindingContext.ModifyGroup, Source={x:Reference Name=RGView}}"
-                                          Text="Modify" />
-                                <MenuItem Command="{Binding Path=BindingContext.DeleteGroup, Source={x:Reference Name=RGView}}"
-                                          CommandParameter="{Binding .}"
-                                          Text="Delete" IsDestructive="True" /> 
-                            </ViewCell.ContextActions>-->
+                            <ViewCell.ContextActions>
+                                <MenuItem Command="{Binding Path=BindingContext.CopyGroup, Source={x:Reference Name=RGView}}"
+                                          CommandParameter="{Binding Token}"
+                                          Text="Copy" IsDestructive="True" /> 
+                            </ViewCell.ContextActions>
                             <Frame VerticalOptions="FillAndExpand"
                                HorizontalOptions="FillAndExpand"
                                Margin="10"

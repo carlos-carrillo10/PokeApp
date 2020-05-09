@@ -13,5 +13,6 @@ namespace PokeApp.Models.FirebaseDatabase
         public string Image { get; set; }
         public string Region { get; set; }
         public string UserId { get; set; }
+        public string Token { get; set; }
     }
 }

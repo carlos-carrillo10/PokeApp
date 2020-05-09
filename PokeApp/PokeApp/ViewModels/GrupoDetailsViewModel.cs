@@ -55,7 +55,9 @@ namespace PokeApp.ViewModels
                     await App.Current.MainPage.DisplayAlert("Success",
                                                   "Your group was deleted successfully", "ok");
 
-                    await _navigationService.GoBackAsync();
+                    var navigationParams = new NavigationParameters();
+                    navigationParams.Add("DeletedGrupoId", GroupId);
+                    await _navigationService.GoBackAsync(navigationParams);
                 }
             });
 

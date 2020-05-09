@@ -6,6 +6,9 @@
              x:Class="PokeApp.Views.MainPage"
              NavigationPage.HasNavigationBar="True"
              Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Command="{Binding Logout}"/>
+    </ContentPage.ToolbarItems>
 
     <Grid VerticalOptions="FillAndExpand"
           HorizontalOptions="FillAndExpand">

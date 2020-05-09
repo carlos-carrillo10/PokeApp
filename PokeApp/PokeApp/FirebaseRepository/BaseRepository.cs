@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace PokeApp.FireBaseRepository.Repositories
 {
@@ -20,6 +21,7 @@ namespace PokeApp.FireBaseRepository.Repositories
             if (_instance == null)
             {
                 _instance = new FirebaseClient("https://pokeapp-276302.firebaseio.com");
+                   // new FirebaseOptions { AuthTokenAsyncFactory = () => Task.FromResult((SecureStorage.GetAsync("Token")).ToString())});
             }
             return _instance;
         }

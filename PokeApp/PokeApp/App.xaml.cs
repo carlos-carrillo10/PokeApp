@@ -23,6 +23,9 @@ namespace PokeApp
          * This imposes a limitation in which the App class must have a default constructor. 
          * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
          */
+
+        public static bool IsLogged { get; set; }
+
         public App() : this(null) { }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
@@ -35,8 +38,6 @@ namespace PokeApp
                 await NavigationService.NavigateAsync("NavigationPage/MainPage");
             else
                 await NavigationService.NavigateAsync("LoginView");
-
-            // await NavigationService.NavigateAsync("NavigationPage/MainPage");
 
         }
 

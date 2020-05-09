@@ -105,12 +105,5 @@ namespace PokeApp.ViewModels
 
         #endregion
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    if (this.PropertyChanged != null)
-        //        this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //}
     }
 }

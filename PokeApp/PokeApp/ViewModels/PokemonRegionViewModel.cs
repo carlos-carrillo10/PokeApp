@@ -82,8 +82,9 @@ namespace PokeApp.ViewModels
                                 PokedexDescription = PokedexDescription,
                                 Image = "",
                                 Region = PokedexInfo.FirstOrDefault().name,
-                                UserId = await SecureStorage.GetAsync("UserId")
-                            };
+                                UserId = await SecureStorage.GetAsync("UserId"),
+                                Token = Convert.ToBase64String(Guid.NewGuid().ToByteArray())
+                        };
 
                             result1 = await _gruposRegionRepository.SaveData(group);
 
@@ -104,7 +105,10 @@ namespace PokeApp.ViewModels
                             {
                                 await App.Current.MainPage.DisplayAlert("Success",
                                                              "Your group was created successfully", "ok");
-                                await navigationService.GoBackAsync();
+
+                                var navigationParams = new NavigationParameters();
+                                navigationParams.Add("RegionName", group.Region);
+                                await navigationService.GoBackAsync(navigationParams);
 
                             }
                             else
@@ -165,7 +169,10 @@ namespace PokeApp.ViewModels
 
                                 await App.Current.MainPage.DisplayAlert("Success",
                                                              "Your group was modified successfully", "ok");
-                                await navigationService.GoBackAsync();
+
+                                var navigationParams = new NavigationParameters();
+                                navigationParams.Add("GrupoId", GruposRegion.GrupoId);
+                                await navigationService.GoBackAsync(navigationParams);
 
                             }
                             else

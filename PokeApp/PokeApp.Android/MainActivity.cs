@@ -15,6 +15,7 @@ namespace PokeApp.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public static FirebaseApp app;
+         long lastPress;
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -42,6 +43,14 @@ namespace PokeApp.Droid
 
             LoadApplication(new App(new AndroidInitializer()));
         }
+
+        public override void OnBackPressed()
+        {
+            // This prevents a user go to the login page when its logged.
+            if (App.IsLogged) return;
+                
+            base.OnBackPressed();
+        }
     }
 
     public class AndroidInitializer : IPlatformInitializer
@@ -51,5 +60,6 @@ namespace PokeApp.Droid
             // Register any platform specific implementations
         }
     }
+
 }
 

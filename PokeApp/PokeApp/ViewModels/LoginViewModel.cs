@@ -52,7 +52,11 @@ namespace PokeApp.ViewModels
                 }
 
                 if (await MakeLogin())
+                {
+                    App.IsLogged = true;
                     await _navigationService.NavigateAsync("NavigationPage/MainPage");
+
+                }
 
             });
 

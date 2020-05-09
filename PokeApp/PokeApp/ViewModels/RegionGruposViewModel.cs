@@ -44,6 +44,21 @@ namespace PokeApp.ViewModels
                 await _navigationService.NavigateAsync("PokemonRegionView", navigationParams);
             });
 
+            CopyGroup = new Command(async (obj) =>
+            {
+                if (obj != null)
+                {
+                    var token = (string)obj;
+                    await Clipboard.SetTextAsync(token);
+                    Vibration.Vibrate(10);
+                    UserDialogs.Instance.Toast("Group's token copied to clipboard.", new TimeSpan(0, 0, 6));
+
+                }
+                else
+                    UserDialogs.Instance.Toast("There is a problem to get group's token.", new TimeSpan(0, 0, 6));
+               
+            });
+
             #endregion
         }
 
@@ -53,18 +68,25 @@ namespace PokeApp.ViewModels
             {
                 UserDialogs.Instance.ShowLoading(null, MaskType.Clear);
 
-                if (parameters != null && parameters.Count != 0)
+                //when comes from deleting a group
+                if (parameters != null && parameters.Count != 0 && parameters.ContainsKey("DeletedGrupoId"))
                 {
-                    Title = (string)parameters["RegionName"];
-                    PokedexInfo = new List<Pokedex>((IList<Pokedex>)parameters["pokedexes"]);
+                    GruposRegionList.Remove(GruposRegionList.Where(x => x.GrupoId == (int)parameters["DeletedGrupoId"]).FirstOrDefault());
+                }
+                else if ((parameters != null && parameters.Count != 0) || !string.IsNullOrEmpty(Title)) //whe comes from another view
+                {
+                    if ((PokedexInfo == null && parameters.ContainsKey("RegionName")) || parameters.ContainsKey("RegionName"))
+                        Title = (string)parameters["RegionName"];
 
-                    var GroupsCreated = await _gruposRegionRepository.GetAllDataByName((string)parameters["RegionName"], await SecureStorage.GetAsync("UserId"));
-                    if (GroupsCreated.Count() >0)
+                    if ((PokedexInfo == null && parameters.ContainsKey("pokedexes")) || parameters.ContainsKey("pokedexes"))
+                        PokedexInfo = new List<Pokedex>((IList<Pokedex>)parameters["pokedexes"]);
+
+                    var GroupsCreated = await _gruposRegionRepository.GetAllDataByName(Title, await SecureStorage.GetAsync("UserId"));
+                    if (GroupsCreated.Count() > 0)
                     {
                         IsEmpty = false;
                         GruposRegionList = new ObservableCollection<GruposRegion>(GroupsCreated);
                         UserDialogs.Instance.HideLoading();
-
                     }
                     else
                         IsEmpty = true;
@@ -108,7 +130,7 @@ namespace PokeApp.ViewModels
             }
         }
 
-      
+
         #endregion
 
         #region Methods
@@ -131,6 +153,7 @@ namespace PokeApp.ViewModels
 
 
         public ICommand CreateGroup { get; private set; }
+        public ICommand CopyGroup { get; private set; }
 
         #endregion
     }
