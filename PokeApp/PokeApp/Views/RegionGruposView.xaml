@@ -44,31 +44,22 @@
                                 <Grid VerticalOptions="Fill"
                                   HorizontalOptions="FillAndExpand">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <ff:CachedImage Source="{Binding Image, Converter={StaticResource GroupsImageConverter}}"
-                                                    VerticalOptions="Center"
-                                                    HorizontalOptions="Center"
-                                                    Grid.Column="0"
-                                                    Grid.Row="0"
-                                                    Grid.RowSpan="2"
-                                                    WidthRequest="50"
-                                                    HeightRequest="50"
- />
+
                                     <Label Text="{Binding GrupoName}"
-                                           Grid.Column="1"
+                                           Grid.Column="0"
                                            Grid.Row="0"
                                            VerticalOptions="CenterAndExpand"
                                            HorizontalOptions="StartAndExpand"
                                            FontSize="Large"
                                            Style="{StaticResource labelFontStyle}"/>
                                     <Label Text="Tap for more information >"
-                                           Grid.Column="1"
+                                           Grid.Column="0"
                                            Grid.Row="1"
                                            VerticalOptions="End"
                                            HorizontalOptions="End"
