@@ -41,6 +41,15 @@ namespace PokeApp.ViewModels
                     return;
                 }
 
+
+                if (!(await _gruposRegionRepository.ItExist(Token, await SecureStorage.GetAsync("UserId"), Region)))
+                {
+                    UserDialogs.Instance.HideLoading();
+                    await App.Current.MainPage.DisplayAlert("Error",
+                                                    "You can't add this group. The Group's owner could have removed it", "ok");
+                    return;
+                }
+
                 if (await _gruposRegionRepository.IsMyGroup(Token, await SecureStorage.GetAsync("UserId"), Region))
                 {
                     UserDialogs.Instance.HideLoading();
@@ -57,13 +66,7 @@ namespace PokeApp.ViewModels
                     return;
                 }
 
-                if (!(await _gruposRegionRepository.ItExist(Token, await SecureStorage.GetAsync("UserId"), Region)))
-                {
-                    UserDialogs.Instance.HideLoading();
-                    await App.Current.MainPage.DisplayAlert("Error",
-                                                    "You can't add this group. The Group's owner could have removed it", "ok");
-                    return;
-                }
+                
 
                 var result = await _gruposRegionRepository.SaveGroupByToken(Token, await SecureStorage.GetAsync("UserId"), Region);
 
